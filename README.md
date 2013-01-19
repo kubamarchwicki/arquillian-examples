@@ -38,4 +38,10 @@ Each commit addresses a single requirement, together with multiple levels of tes
 	Application entry point can be a simple web form (for the time being), to POST the String data.
 	Display basic feed information in response. 
 	
+4. Create a RESTful entry point /rs/consume/{feedname}
+
+	When PubSubHubBub resolves a callback URL, it post the feed in the message body. 
+	So to address this usecase a RESTful endpoint needs t be created. 
+	
+		
 [1]: http://tomee.apache.org/	"TomEE all-Apache Java EE 6 Web Profile"

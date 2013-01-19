@@ -65,6 +65,13 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.3.1.Final</version>
+			<scope>test</scope>
+		</dependency>
+
 		<!-- JEE6 profile -->
 		<dependency>
 			<groupId>javax</groupId>

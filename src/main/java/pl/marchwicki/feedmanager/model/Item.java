@@ -2,11 +2,26 @@ package pl.marchwicki.feedmanager.model;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+
+import org.apache.bval.constraints.NotEmpty;
+
 public class Item {
 
+	@NotNull
+	@NotEmpty
 	private String title;
+	
+	@NotNull
+	@NotEmpty
 	private String link;
+	
+	@NotNull
+	@NotEmpty
 	private String content;
+	
+	@Past
 	private Date date;
 
 	public Item() {

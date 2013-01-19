@@ -46,6 +46,12 @@ Each commit addresses a single requirement, together with multiple levels of tes
 5. Store consumed feed within a volatile runtime repository
 
 	After consuming a feed (no matter how - via form or via RESTful service) persist the collected data in a volatile repository.
+	
+6. Feeds must be validated before persisting
+
+	Feeds title and link must not be empty
+	Feed must contain at least one Item
+	Item's title, link, content and date must not be empty. 
 	 
 		
 [1]: http://tomee.apache.org/	"TomEE all-Apache Java EE 6 Web Profile"

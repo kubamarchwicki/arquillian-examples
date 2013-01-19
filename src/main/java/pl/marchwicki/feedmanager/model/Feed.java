@@ -3,10 +3,22 @@ package pl.marchwicki.feedmanager.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.apache.bval.constraints.NotEmpty;
+
 public class Feed {
 
+	@NotNull
+	@NotEmpty
 	private String title;
+	
+	@NotNull
+	@NotEmpty
 	private String link;
+	
+	@Size(min=1)
 	private List<Item> items;
 
 	public Feed() {

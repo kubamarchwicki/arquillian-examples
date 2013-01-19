@@ -9,7 +9,18 @@
 
 	<dependencies>
 	
+		<dependency>
+			<groupId>rome</groupId>
+			<artifactId>rome</artifactId>
+			<version>0.9</version>
+		</dependency>	
 	
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>		
 	
 		<!-- JEE6 profile -->
 		<dependency>

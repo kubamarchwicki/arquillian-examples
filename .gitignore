@@ -1,13 +1,5 @@
 
 /.classpath
 /.project
-/.settings/.jsdtscope
-/.settings/org.eclipse.jdt.core.prefs
-/.settings/org.eclipse.m2e.core.prefs
-/.settings/org.eclipse.wst.common.component
-/.settings/org.eclipse.wst.common.project.facet.core.xml
-/.settings/org.eclipse.wst.jsdt.ui.superType.container
-/.settings/org.eclipse.wst.jsdt.ui.superType.name
-/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
-/target/m2e-wtp/web-resources/META-INF/maven/pl.marchwicki.jee6/feedmanager/pom.properties
-/target/m2e-wtp/web-resources/META-INF/maven/pl.marchwicki.jee6/feedmanager/pom.xml
+/.settings/
+/target/

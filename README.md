@@ -28,6 +28,9 @@ Each commit addresses a single requirement, together with multiple levels of tes
     Initial commit, which includes pom.xml - which is sufficient to deploy onto application server. A simple `mvn package` command wraps everything into a WAR file which is fully deployable onto the application server.
     No additional dependencies are required, because the full stack is provided by the application server.  
 
-2. 
+2. Parsing RSS feed
 
+	An incoming RSS item must be parsed and basic feed information must be extracted into an application model.
+	Rome library is used for parsing, which is later mapped onto custom model.  
+	
 [1]: http://tomee.apache.org/	"TomEE all-Apache Java EE 6 Web Profile"

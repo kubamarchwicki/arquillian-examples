@@ -33,4 +33,9 @@ Each commit addresses a single requirement, together with multiple levels of tes
 	An incoming RSS item must be parsed and basic feed information must be extracted into an application model.
 	Rome library is used for parsing, which is later mapped onto custom model.  
 	
+3. Create application entry point
+
+	Application entry point can be a simple web form (for the time being), to POST the String data.
+	Display basic feed information in response. 
+	
 [1]: http://tomee.apache.org/	"TomEE all-Apache Java EE 6 Web Profile"

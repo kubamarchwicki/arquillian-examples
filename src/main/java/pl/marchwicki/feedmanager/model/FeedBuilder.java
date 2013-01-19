@@ -4,10 +4,14 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.enterprise.inject.Default;
+import javax.inject.Named;
+
 import com.sun.syndication.feed.synd.SyndEntryImpl;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.SyndFeedInput;
 
+@Named
 public class FeedBuilder {
 
 	public Feed fromXml(String xml) {

@@ -3,7 +3,6 @@ package pl.marchwicki.feedmanager.web;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import pl.marchwicki.feedmanager.FeedsRepository;
 import pl.marchwicki.feedmanager.model.Feed;
 import pl.marchwicki.feedmanager.model.FeedBuilder;
 
@@ -22,12 +22,18 @@ public class ConsumerServlet extends HttpServlet {
 	@Inject
 	FeedBuilder builder;
 	
+	@Inject
+	FeedsRepository repository;
+
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
 		String rssbody = req.getParameter("rss");
-		Feed feed = builder.fromXml(rssbody);
+		String feedname = req.getParameter("feedname");
 
+		Feed feed = builder.fromXml(rssbody);
+		repository.addItem(feedname, feed);
+		
 		PrintWriter writer = resp.getWriter();
 		writer.append("There are " + feed.getItems().size()
 				+ " articles in the feed");

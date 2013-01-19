@@ -2,30 +2,14 @@ package pl.marchwicki.feedmanager.model;
 
 import java.util.Date;
 
-import com.sun.syndication.feed.synd.SyndEntryImpl;
-
 public class Item {
 
-	private long id;
 	private String title;
 	private String link;
 	private String content;
 	private Date date;
-	private Feed feed;
 
-	public Item(SyndEntryImpl romeEntry) {
-		this.title = romeEntry.getTitle();
-		this.link = romeEntry.getLink();
-		this.content = romeEntry.getDescription().getValue();
-		this.date = romeEntry.getPublishedDate();
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
+	public Item() {
 	}
 
 	public String getTitle() {
@@ -60,12 +44,41 @@ public class Item {
 		this.date = date;
 	}
 
-	public Feed getFeed() {
-		return feed;
+	private Item(Builder builder) {
+		this.title = builder.title;
+		this.link = builder.link;
+		this.content = builder.content;
+		this.date = builder.date;
 	}
 
-	public void setFeed(Feed feed) {
-		this.feed = feed;
-	}
+	public static class Builder {
+		private String title;
+		private String link;
+		private String content;
+		private Date date;
 
+		public Builder withTitle(String title) {
+			this.title = title;
+			return this;
+		}
+
+		public Builder withLink(String link) {
+			this.link = link;
+			return this;
+		}
+
+		public Builder withContent(String content) {
+			this.content = content;
+			return this;
+		}
+
+		public Builder withDate(Date date) {
+			this.date = date;
+			return this;
+		}
+
+		public Item build() {
+			return new Item(this);
+		}
+	}
 }

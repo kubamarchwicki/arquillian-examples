@@ -41,10 +41,15 @@ public class Feed {
 		if (this.items == null) {
 			this.items = new ArrayList<Item>();
 		}
-
-		item.setFeed(this);
 		this.items.add(item);
 	}
+	
+	public void addItems(List<Item> items) {
+		if (items == null) {
+			items = new ArrayList<Item>();
+		}
+		this.items.addAll(items);
+	}	
 
 	private Feed(Builder builder) {
 		this.title = builder.title;
@@ -76,4 +81,5 @@ public class Feed {
 			return new Feed(this);
 		}
 	}
+
 }

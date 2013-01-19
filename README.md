@@ -43,5 +43,9 @@ Each commit addresses a single requirement, together with multiple levels of tes
 	When PubSubHubBub resolves a callback URL, it post the feed in the message body. 
 	So to address this usecase a RESTful endpoint needs t be created. 
 	
+5. Store consumed feed within a volatile runtime repository
+
+	After consuming a feed (no matter how - via form or via RESTful service) persist the collected data in a volatile repository.
+	 
 		
 [1]: http://tomee.apache.org/	"TomEE all-Apache Java EE 6 Web Profile"

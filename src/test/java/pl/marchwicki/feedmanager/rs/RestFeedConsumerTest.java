@@ -7,6 +7,8 @@ import java.io.File;
 import java.net.URL;
 import java.util.Scanner;
 
+import javax.inject.Inject;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -23,6 +25,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import pl.marchwicki.feedmanager.FeedsRepository;
 import pl.marchwicki.feedmanager.model.FeedBuilder;
 import pl.marchwicki.feedmanager.rs.RestFeedConsumerEndpoint;
 
@@ -30,23 +33,16 @@ import pl.marchwicki.feedmanager.rs.RestFeedConsumerEndpoint;
 public class RestFeedConsumerTest {
 
 	private final String FEED_NAME = "javalobby";
-	private static String rssParameterBody;
 	
-	@BeforeClass
-	public static void readXmlContent() throws Exception {
-		URL dir_url = RestFeedConsumerTest.class.getResource("/");
-		File dir = new File(dir_url.toURI());
-		File xml = new File(dir, "feed.xml");
-		
-		rssParameterBody = new Scanner( xml, "UTF-8" ).useDelimiter("\\A").next(); 
-	}
-	
+	@Inject
+	FeedsRepository repository;
 	
 	@Deployment
 	public static WebArchive createDeployment() throws Exception {
 		return ShrinkWrap
 				.create(WebArchive.class, "test.war")
 				.addClass(RestFeedConsumerEndpoint.class)
+				.addClass(FeedsRepository.class)
 				.addClass(FeedBuilder.class)
 				.addAsWebInfResource(EmptyAsset.INSTANCE,
 						ArchivePaths.create("beans.xml"));
@@ -65,8 +61,20 @@ public class RestFeedConsumerTest {
 		
 		//then
 		assertThat(response.getStatusLine().getStatusCode(), equalTo(201));
+		assertThat(repository.getAllFeeds().size(), equalTo(1));
+		assertThat(repository.getFeed(FEED_NAME).getItems().size(), equalTo(15));
 	}
 	
 	
+	@BeforeClass
+	public static void readXmlContent() throws Exception {
+		URL dir_url = RestFeedConsumerTest.class.getResource("/");
+		File dir = new File(dir_url.toURI());
+		File xml = new File(dir, "feed.xml");
+		
+		rssParameterBody = new Scanner( xml, "UTF-8" ).useDelimiter("\\A").next(); 
+	}
+	
 
+	private static String rssParameterBody;
 }

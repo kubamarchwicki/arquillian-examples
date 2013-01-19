@@ -2,9 +2,9 @@ package pl.marchwicki.feedmanager.model;
 
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import javax.enterprise.inject.Default;
 import javax.inject.Named;
 
 import com.sun.syndication.feed.synd.SyndEntryImpl;
@@ -33,11 +33,38 @@ public class FeedBuilder {
 		List<?> romeEntries = romeFeed.getEntries();
 		for (Object o : romeEntries) {
 			SyndEntryImpl romeEntry = (SyndEntryImpl) o;
-			Item item = new Item(romeEntry);
+			Item item = new ItemBuilder()
+				.fromRomeSyndEntry(romeEntry)
+				.build();
 			f.addItem(item);
 		}
 
 		return f;
 	}
 
+	public static class ItemBuilder {
+		private String title;
+		private String link;
+		private String content;
+		private Date date;
+
+		public ItemBuilder fromRomeSyndEntry(SyndEntryImpl romeEntry) {
+			this.title = romeEntry.getTitle();
+			this.link = romeEntry.getLink();
+			this.content = romeEntry.getDescription().getValue();
+			this.date = romeEntry.getPublishedDate();
+			
+			return this;
+		}
+
+		public Item build() {
+			return new Item.Builder()
+				.withTitle(title)
+				.withLink(link)
+				.withContent(content)
+				.withDate(date)
+				.build();
+		}
+
+	}
 }

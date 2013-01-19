@@ -26,8 +26,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import pl.marchwicki.feedmanager.FeedsRepository;
+import pl.marchwicki.feedmanager.FeedsService;
 import pl.marchwicki.feedmanager.model.FeedBuilder;
-import pl.marchwicki.feedmanager.rs.RestFeedConsumerEndpoint;
 
 @RunWith(Arquillian.class)
 public class RestFeedConsumerTest {
@@ -42,8 +42,9 @@ public class RestFeedConsumerTest {
 		return ShrinkWrap
 				.create(WebArchive.class, "test.war")
 				.addClass(RestFeedConsumerEndpoint.class)
-				.addClass(FeedsRepository.class)
+				.addClass(FeedsService.class)
 				.addClass(FeedBuilder.class)
+				.addClass(FeedsRepository.class)
 				.addAsWebInfResource(EmptyAsset.INSTANCE,
 						ArchivePaths.create("beans.xml"));
 	}

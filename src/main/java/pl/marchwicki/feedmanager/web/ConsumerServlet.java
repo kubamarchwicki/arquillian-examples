@@ -10,9 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pl.marchwicki.feedmanager.FeedsRepository;
+import pl.marchwicki.feedmanager.FeedsService;
 import pl.marchwicki.feedmanager.model.Feed;
-import pl.marchwicki.feedmanager.model.FeedBuilder;
 
 @WebServlet(urlPatterns="/web/consume/*")
 public class ConsumerServlet extends HttpServlet {
@@ -20,10 +19,7 @@ public class ConsumerServlet extends HttpServlet {
 	private static final long serialVersionUID = -3793876752332268424L;
 
 	@Inject
-	FeedBuilder builder;
-	
-	@Inject
-	FeedsRepository repository;
+	FeedsService service;
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -31,8 +27,7 @@ public class ConsumerServlet extends HttpServlet {
 		String rssbody = req.getParameter("rss");
 		String feedname = req.getParameter("feedname");
 
-		Feed feed = builder.fromXml(rssbody);
-		repository.addItem(feedname, feed);
+		Feed feed = service.addNewItems(feedname, rssbody);
 		
 		PrintWriter writer = resp.getWriter();
 		writer.append("There are " + feed.getItems().size()

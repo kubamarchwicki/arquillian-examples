@@ -31,6 +31,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import pl.marchwicki.feedmanager.FeedsRepository;
+import pl.marchwicki.feedmanager.FeedsService;
 import pl.marchwicki.feedmanager.model.FeedBuilder;
 
 @RunWith(Arquillian.class)
@@ -46,6 +47,7 @@ public class ConsumerServletTest {
 		return ShrinkWrap
 				.create(WebArchive.class, "test.war")
 				.addClass(ConsumerServlet.class)
+				.addClass(FeedsService.class)
 				.addClass(FeedBuilder.class)
 				.addClass(FeedsRepository.class)
 				.addAsWebInfResource(EmptyAsset.INSTANCE,
@@ -79,11 +81,10 @@ public class ConsumerServletTest {
 		assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
 		assertThat(EntityUtils.toString(response.getEntity()),
 				equalTo("There are 15 articles in the feed"));
-		
+
 		assertThat(repository.getAllFeeds().size(), equalTo(1));
 		assertThat(repository.getFeed(FEED_NAME).getItems().size(), equalTo(15));
 	}
-
 
 	@BeforeClass
 	public static void readXmlContent() throws Exception {

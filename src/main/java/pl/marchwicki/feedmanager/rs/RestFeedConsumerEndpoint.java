@@ -8,26 +8,19 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import pl.marchwicki.feedmanager.FeedsRepository;
-import pl.marchwicki.feedmanager.model.Feed;
-import pl.marchwicki.feedmanager.model.FeedBuilder;
+import pl.marchwicki.feedmanager.FeedsService;
 
 @Path("/rs")
 @Stateless
 public class RestFeedConsumerEndpoint {
 
 	@Inject
-	FeedBuilder parser;
-	
-	@Inject
-	FeedsRepository repository;
+	FeedsService service;
 	
 	@Path("/consume/{feedname}")
 	@POST
 	public Response consume(@PathParam("feedname") String feedname, String messageBody) {
-		Feed feed = parser.fromXml(messageBody);
-		repository.addItem(feedname, feed);
-		
+		service.addNewItems(feedname, messageBody);
 		return Response.status(Status.CREATED).build();
 	}
 	

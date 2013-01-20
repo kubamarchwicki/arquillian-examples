@@ -2,18 +2,19 @@ package pl.marchwicki.feedmanager;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 import java.io.File;
 import java.net.URL;
 import java.util.Scanner;
 
+import javax.enterprise.event.Event;
 import javax.validation.Validation;
 import javax.validation.ValidatorFactory;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import pl.marchwicki.feedmanager.model.Feed;
 import pl.marchwicki.feedmanager.model.FeedBuilder;
 import pl.marchwicki.feedmanager.rs.RestFeedConsumerTest;
 
@@ -25,6 +26,7 @@ public class FeedServiceTest {
 	FeedsRepository repository = new FeedsRepository();
 	
 	{
+		service.event = mock(Event.class);
 		service.repository = this.repository;
 		service.builder = new FeedBuilder();
 		

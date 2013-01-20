@@ -24,6 +24,11 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.2</version>
+		</dependency>
+		<dependency>
 			<groupId>rome</groupId>
 			<artifactId>rome</artifactId>
 			<version>0.9</version>
@@ -114,5 +119,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 </project>

@@ -2,11 +2,34 @@ package pl.marchwicki.feedmanager.log;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="feed_event_logs")
 public class FeedEventLog {
-	
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
 	private String feedname;
 	private Integer itemsCount;
 	private Date date;
+
+	private FeedEventLog() {
+		
+	}
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
 	
 	public String getFeedname() {
 		return feedname;

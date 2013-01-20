@@ -4,21 +4,20 @@ import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-
-import org.apache.bval.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 public class Item {
 
 	@NotNull
-	@NotEmpty
+	@Size(min=1)
 	private String title;
 	
 	@NotNull
-	@NotEmpty
+	@Size(min=1)
 	private String link;
 	
 	@NotNull
-	@NotEmpty
+	@Size(min=1)
 	private String content;
 	
 	@Past

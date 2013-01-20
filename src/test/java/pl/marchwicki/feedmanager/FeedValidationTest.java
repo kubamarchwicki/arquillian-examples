@@ -48,7 +48,7 @@ public class FeedValidationTest {
 		Set<ConstraintViolation<Feed>> errors = validator.validate(f);
 
 		assertThat(errors.size(), equalTo(1));
-        assertEquals("may not be null", errors.iterator().next().getMessage());
+        assertThat(errors.iterator().next().getMessage(), equalTo("may not be null"));
 	}	
 	
 	@Test
@@ -61,6 +61,6 @@ public class FeedValidationTest {
 		Set<ConstraintViolation<Feed>> errors = validator.validate(f);
 
 		assertThat(errors.size(), equalTo(1));
-        assertEquals("may not be empty", errors.iterator().next().getMessage());
+        assertThat(errors.iterator().next().getMessage(), startsWith("size must be between 1"));
 	}	
 }

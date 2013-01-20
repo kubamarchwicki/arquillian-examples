@@ -6,16 +6,14 @@ import java.util.List;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.apache.bval.constraints.NotEmpty;
-
 public class Feed {
 
 	@NotNull
-	@NotEmpty
+	@Size(min=1)
 	private String title;
 	
 	@NotNull
-	@NotEmpty
+	@Size(min=1)
 	private String link;
 	
 	@Size(min=1)

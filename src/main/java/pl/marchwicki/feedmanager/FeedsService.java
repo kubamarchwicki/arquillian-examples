@@ -3,15 +3,15 @@ package pl.marchwicki.feedmanager;
 import java.util.Set;
 
 import javax.annotation.Resource;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.inject.Named;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 
 import pl.marchwicki.feedmanager.model.Feed;
 import pl.marchwicki.feedmanager.model.FeedBuilder;
 
-@Named
+@Stateless
 public class FeedsService {
 
 	@Inject

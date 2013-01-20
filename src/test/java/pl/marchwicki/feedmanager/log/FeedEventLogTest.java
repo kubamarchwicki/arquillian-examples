@@ -1,76 +1,96 @@
-package pl.marchwicki.feedmanager.rs;
+package pl.marchwicki.feedmanager.log;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import static com.jayway.awaitility.Awaitility.*;
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*; 
 
 import java.io.File;
 import java.net.URL;
 import java.util.Scanner;
 
+import javax.enterprise.event.Observes;
 import javax.inject.Inject;
+import javax.inject.Named;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.ArchivePaths;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import pl.marchwicki.feedmanager.FeedsRepository;
 import pl.marchwicki.feedmanager.FeedsService;
-import pl.marchwicki.feedmanager.log.FeedBodyLoggingInterceptor;
-import pl.marchwicki.feedmanager.log.FeedEventLogListener;
 import pl.marchwicki.feedmanager.model.FeedBuilder;
+import pl.marchwicki.feedmanager.rs.RestFeedConsumerTest;
 
 @RunWith(Arquillian.class)
-public class RestFeedConsumerTest {
+public class FeedEventLogTest {
 
 	private final String FEED_NAME = "javalobby";
 	
 	@Inject
-	FeedsRepository repository;
+	FeedsService service;
+	
+	static FeedEventLog log;
 	
 	@Deployment
 	public static WebArchive createDeployment() throws Exception {
 		return ShrinkWrap
 				.create(WebArchive.class, "test.war")
-				.addClass(RestFeedConsumerEndpoint.class)
-				.addClass(FeedsService.class)
-				.addClass(FeedEventLogListener.class)
-				.addClass(FeedBodyLoggingInterceptor.class)
 				.addClass(FeedBuilder.class)
+				.addClass(FeedsService.class)
 				.addClass(FeedsRepository.class)
+				.addClass(FeedBodyLoggingInterceptor.class)
+				.addClass(EventListener.class)
 				.addAsWebInfResource(EmptyAsset.INSTANCE,
 						ArchivePaths.create("beans.xml"));
 	}
-
-	@Test
-	@RunAsClient
-	public void shouldParseXmlFeedTest(@ArquillianResource URL baseURL) throws Exception {
-		//given
-		DefaultHttpClient httpclient = new DefaultHttpClient();
-		HttpPost post = new HttpPost(baseURL.toURI() + "rs/consume/"+FEED_NAME);
-		post.setEntity(new StringEntity(rssParameterBody));  		
-		
-		//when
-		HttpResponse response = httpclient.execute(post);
-		
-		//then
-		assertThat(response.getStatusLine().getStatusCode(), equalTo(201));
-		assertThat(repository.getAllFeeds().size(), equalTo(1));
-		assertThat(repository.getFeed(FEED_NAME).getItems().size(), equalTo(15));
+	
+	@Before
+	public void init() {
+		log = null;
 	}
 	
+	@Test
+	public void shouldNotifyObserverTest() throws Exception {
+		new Thread(new Runnable() {
+			public void run() {
+				service.addNewItems(FEED_NAME, rssParameterBody);				
+			}
+		}).start();
+		
+		await().until( fieldIn(FeedEventLogTest.class).ofType(FeedEventLog.class), notNullValue());
+		
+		assertThat(log.getFeedname(), equalTo(FEED_NAME));
+		assertThat(log.getItemsCount(), equalTo(15));
+	}
 	
+	@Test
+	public void shouldNotNotifyOnMalformedFeed() throws Exception {
+		new Thread(new Runnable() {
+			public void run() {
+				service.addNewItems(FEED_NAME, "");				
+			}
+		}).start();
+		
+		Thread.sleep(1000);
+		
+		assertThat(log, nullValue());
+	}	
+
+	@Named
+	public static class EventListener {
+		
+		public void listener(@Observes FeedEventLog log) {
+			FeedEventLogTest.log = log;
+		}
+	}
+
 	@BeforeClass
 	public static void readXmlContent() throws Exception {
 		URL dir_url = RestFeedConsumerTest.class.getResource("/");
@@ -82,4 +102,5 @@ public class RestFeedConsumerTest {
 	
 
 	private static String rssParameterBody;
+
 }

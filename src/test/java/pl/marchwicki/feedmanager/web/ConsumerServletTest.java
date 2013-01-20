@@ -32,6 +32,8 @@ import org.junit.runner.RunWith;
 
 import pl.marchwicki.feedmanager.FeedsRepository;
 import pl.marchwicki.feedmanager.FeedsService;
+import pl.marchwicki.feedmanager.log.FeedBodyLoggingInterceptor;
+import pl.marchwicki.feedmanager.log.FeedEventLogListener;
 import pl.marchwicki.feedmanager.model.FeedBuilder;
 
 @RunWith(Arquillian.class)
@@ -48,6 +50,8 @@ public class ConsumerServletTest {
 				.create(WebArchive.class, "test.war")
 				.addClass(ConsumerServlet.class)
 				.addClass(FeedsService.class)
+				.addClass(FeedEventLogListener.class)
+				.addClass(FeedBodyLoggingInterceptor.class)
 				.addClass(FeedBuilder.class)
 				.addClass(FeedsRepository.class)
 				.addAsWebInfResource(EmptyAsset.INSTANCE,

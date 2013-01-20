@@ -7,7 +7,10 @@ import java.io.File;
 import java.net.URL;
 import java.util.Scanner;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.interceptor.AroundInvoke;
+import javax.interceptor.InvocationContext;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -27,8 +30,6 @@ import org.junit.runner.RunWith;
 
 import pl.marchwicki.feedmanager.FeedsRepository;
 import pl.marchwicki.feedmanager.FeedsService;
-import pl.marchwicki.feedmanager.log.FeedBodyLoggingInterceptor;
-import pl.marchwicki.feedmanager.log.FeedEventLogListener;
 import pl.marchwicki.feedmanager.model.FeedBuilder;
 
 @RunWith(Arquillian.class)
@@ -45,8 +46,7 @@ public class RestFeedConsumerTest {
 				.create(WebArchive.class, "test.war")
 				.addClass(RestFeedConsumerEndpoint.class)
 				.addClass(FeedsService.class)
-				.addClass(FeedEventLogListener.class)
-				.addClass(FeedBodyLoggingInterceptor.class)
+				.addClass(FeedBodyLoggingInterceptorStub.class)
 				.addClass(FeedBuilder.class)
 				.addClass(FeedsRepository.class)
 				.addAsWebInfResource(EmptyAsset.INSTANCE,
@@ -54,7 +54,6 @@ public class RestFeedConsumerTest {
 	}
 
 	@Test
-	@RunAsClient
 	public void shouldParseXmlFeedTest(@ArquillianResource URL baseURL) throws Exception {
 		//given
 		DefaultHttpClient httpclient = new DefaultHttpClient();
@@ -70,6 +69,15 @@ public class RestFeedConsumerTest {
 		assertThat(repository.getFeed(FEED_NAME).getItems().size(), equalTo(15));
 	}
 	
+	@Stateless
+	public static class FeedBodyLoggingInterceptorStub {
+		
+		@AroundInvoke
+		public Object log(InvocationContext ctx) throws Exception {
+			return ctx.proceed();
+		}
+		
+	}
 	
 	@BeforeClass
 	public static void readXmlContent() throws Exception {

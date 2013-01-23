@@ -1,16 +1,14 @@
 package pl.marchwicki.feedmanager.log;
 
 import java.util.Arrays;
+import java.util.logging.Logger;
 
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.InvocationContext;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class FeedBodyLoggingInterceptor {
 
-	private static Logger log = LoggerFactory.getLogger(FeedBodyLoggingInterceptor.class);
+	private static Logger log = Logger.getLogger(FeedBodyLoggingInterceptor.class.getName());
 	
 	@AroundInvoke
 	public Object log(InvocationContext ctx) throws Exception {

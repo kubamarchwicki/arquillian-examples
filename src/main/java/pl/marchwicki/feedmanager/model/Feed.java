@@ -3,9 +3,12 @@ package pl.marchwicki.feedmanager.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@MappedSuperclass
 public class Feed {
 
 	@NotNull
@@ -16,6 +19,7 @@ public class Feed {
 	@Size(min=1)
 	private String link;
 	
+	@Transient
 	@Size(min=1)
 	private List<Item> items;
 
@@ -92,4 +96,35 @@ public class Feed {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!getClass().isAssignableFrom(obj.getClass()))
+			return false;
+		Feed other = (Feed) obj;
+		if (items == null) {
+			if (other.items != null)
+				return false;
+		} else if (!items.equals(other.items))
+			return false;
+		if (link == null) {
+			if (other.link != null)
+				return false;
+		} else if (!link.equals(other.link))
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		return true;
+	}
+
+	
+	
+	
+	
 }

@@ -65,4 +65,8 @@ Each commit addresses a single requirement, together with multiple levels of tes
 	Business wise, each feed activity must be persisted into database. Each log must contain feed name information, number of stored items and the current date. 
 	From the debugging perspective, incoming XML messages must be logged for future reference. 
 	
-	
+8. **The feeds repository can be either in-memory or database**
+
+	Override existing model with persistable one (with entities)
+	Handle persisting items collection. 
+	Both repository should be available all the time.

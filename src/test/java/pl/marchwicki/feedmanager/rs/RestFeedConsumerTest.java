@@ -28,6 +28,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import pl.marchwicki.feedmanager.FeedsRepository;
+import pl.marchwicki.feedmanager.InMemoryFeedsRepository;
 import pl.marchwicki.feedmanager.FeedsService;
 import pl.marchwicki.feedmanager.model.FeedBuilder;
 
@@ -47,7 +48,7 @@ public class RestFeedConsumerTest {
 				.addClass(FeedsService.class)
 				.addClass(FeedBodyLoggingInterceptorStub.class)
 				.addClass(FeedBuilder.class)
-				.addClass(FeedsRepository.class)
+				.addClass(InMemoryFeedsRepository.class)
 				.addAsWebInfResource(EmptyAsset.INSTANCE,
 						ArchivePaths.create("beans.xml"));
 	}

@@ -23,7 +23,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import pl.marchwicki.feedmanager.FeedsRepository;
+import pl.marchwicki.feedmanager.InMemoryFeedsRepository;
 import pl.marchwicki.feedmanager.FeedsService;
 import pl.marchwicki.feedmanager.model.FeedBuilder;
 import pl.marchwicki.feedmanager.rs.RestFeedConsumerTest;
@@ -44,7 +44,7 @@ public class FeedEventLogTest {
 				.create(WebArchive.class, "test.war")
 				.addClass(FeedBuilder.class)
 				.addClass(FeedsService.class)
-				.addClass(FeedsRepository.class)
+				.addClass(InMemoryFeedsRepository.class)
 				.addClass(FeedBodyLoggingInterceptor.class)
 				.addClass(EventListener.class)
 				.addAsWebInfResource(EmptyAsset.INSTANCE,

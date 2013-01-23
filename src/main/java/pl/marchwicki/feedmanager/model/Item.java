@@ -2,10 +2,14 @@ package pl.marchwicki.feedmanager.model;
 
 import java.util.Date;
 
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+@MappedSuperclass
 public class Item {
 
 	@NotNull
@@ -21,6 +25,7 @@ public class Item {
 	private String content;
 	
 	@Past
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 
 	public Item() {
@@ -95,4 +100,45 @@ public class Item {
 			return new Item(this);
 		}
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!getClass().isAssignableFrom(obj.getClass()))
+			return false;		
+		Item other = (Item) obj;
+		if (content == null) {
+			if (other.content != null)
+				return false;
+		} else if (!content.equals(other.content))
+			return false;
+		if (date == null) {
+			if (other.date != null)
+				return false;
+		} else if (date.getTime() != other.date.getTime())
+			return false;
+		if (link == null) {
+			if (other.link != null)
+				return false;
+		} else if (!link.equals(other.link))
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Item [title=" + title + ", link=" + link + ", content="
+				+ content + ", date=" + date + "]";
+	}
+	
+	
+
 }

@@ -23,7 +23,7 @@ public class FeedServiceTest {
 	private final String FEED_NAME = "javalobby";
 
 	FeedsService service = new FeedsService();
-	FeedsRepository repository = new FeedsRepository();
+	FeedsRepository repository = new InMemoryFeedsRepository();
 	
 	{
 		service.event = mock(Event.class);

@@ -12,7 +12,7 @@ import pl.marchwicki.feedmanager.model.Item;
 public class FeedRepositoryTest {
 
 	private final String FEED_NAME = "test-feed-name";
-	private FeedsRepository repository = new FeedsRepository();
+	private FeedsRepository repository = new InMemoryFeedsRepository();
 	
 	@Test
 	public void shouldAddAFeed() {

@@ -82,6 +82,12 @@
 			<version>${tomee.version}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.openejb</groupId>
+			<artifactId>tomee-webservices</artifactId>
+			<version>${tomee.version}</version>
+			<scope>test</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>org.hibernate</groupId>

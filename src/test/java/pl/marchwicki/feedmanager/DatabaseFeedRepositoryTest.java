@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 
 import java.util.Date;
 
+import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -32,7 +33,6 @@ public class DatabaseFeedRepositoryTest {
 	EntityManager em;
 	
 	@Inject
-	@Database
 	FeedsRepository repository;
 	
 	@Deployment
@@ -43,8 +43,7 @@ public class DatabaseFeedRepositoryTest {
 				.addClass(InMemoryFeedsRepository.class)
 				.addClasses(FeedEntity.class, ItemEntity.class)
 				.addAsResource("test-persistence.xml", "META-INF/persistence.xml")
-				.addAsWebInfResource(EmptyAsset.INSTANCE,
-						ArchivePaths.create("beans.xml"));
+				.addAsResource("test-beans.xml", "META-INF/beans.xml");
 	}	
 	
 	@Test

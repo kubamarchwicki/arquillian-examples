@@ -70,3 +70,7 @@ Each commit addresses a single requirement, together with multiple levels of tes
 	Override existing model with persistable one (with entities)
 	Handle persisting items collection. 
 	Both repository should be available all the time.
+	
+9. **Feedmanager statistics should be available via SOAP endpoint**
+
+	Aggregated feed counts (feedname + count of available documents) should be available via SOAP webservice.

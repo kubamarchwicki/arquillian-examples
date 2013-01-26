@@ -2,6 +2,7 @@ package pl.marchwicki.feedmanager.model;
 
 import java.util.Date;
 
+import javax.persistence.Lob;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,6 +23,7 @@ public class Item {
 	
 	@NotNull
 	@Size(min=1)
+	@Lob
 	private String content;
 	
 	@Past

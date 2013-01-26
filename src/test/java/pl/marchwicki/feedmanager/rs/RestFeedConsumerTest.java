@@ -31,6 +31,7 @@ import pl.marchwicki.feedmanager.FeedsRepository;
 import pl.marchwicki.feedmanager.InMemoryFeedsRepository;
 import pl.marchwicki.feedmanager.FeedsService;
 import pl.marchwicki.feedmanager.model.FeedBuilder;
+import pl.marchwicki.feedmanager.ws.LoggingStats;
 
 @RunWith(Arquillian.class)
 public class RestFeedConsumerTest {
@@ -46,6 +47,7 @@ public class RestFeedConsumerTest {
 				.create(WebArchive.class, "test.war")
 				.addClass(RestFeedConsumerEndpoint.class)
 				.addClass(FeedsService.class)
+				.addClass(LoggingStats.class)
 				.addClass(FeedBodyLoggingInterceptorStub.class)
 				.addClass(FeedBuilder.class)
 				.addClass(InMemoryFeedsRepository.class)

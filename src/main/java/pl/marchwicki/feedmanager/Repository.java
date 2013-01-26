@@ -12,7 +12,9 @@ import javax.inject.Qualifier;
 @Target(value={ElementType.TYPE, ElementType.FIELD})
 @Retention(value=RetentionPolicy.RUNTIME)
 @Documented
-public @interface Database 
+public @interface Repository 
 {
-
+	public enum RepositoryType { IN_MEMORY, DATABASE }
+	RepositoryType value();
+	
 }

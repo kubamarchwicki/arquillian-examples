@@ -9,13 +9,15 @@ import javax.ejb.Lock;
 import javax.ejb.LockType;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
+import javax.enterprise.inject.Default;
 
 import pl.marchwicki.feedmanager.model.Feed;
 
 @Singleton
 @Startup
 @Lock(LockType.READ)
-//@ConcurrencyManagement(ConcurrencyManagementType.BEAN)
+// @ConcurrencyManagement(ConcurrencyManagementType.BEAN)
+@Default
 public class InMemoryFeedsRepository implements FeedsRepository {
 
 	private Map<String, Feed> repository = new HashMap<String, Feed>();
@@ -31,10 +33,9 @@ public class InMemoryFeedsRepository implements FeedsRepository {
 	public Feed getFeed(String feedname) {
 		return repository.get(feedname);
 	}
-	
+
 	public List<Feed> getAllFeeds() {
 		return new ArrayList<Feed>(repository.values());
 	}
 
-	
 }

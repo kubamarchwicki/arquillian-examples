@@ -36,4 +36,6 @@ public class FeedRepositoryTest {
 		assertThat(repository.getFeed("various name"), equalTo(null));
 		assertThat(repository.getFeed(FEED_NAME), equalTo(f));
 	}
+	
+	
 }

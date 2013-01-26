@@ -3,6 +3,7 @@ package pl.marchwicki.feedmanager;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.enterprise.inject.Alternative;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -12,7 +13,7 @@ import pl.marchwicki.feedmanager.model.entities.FeedEntity;
 import com.google.common.collect.Iterables;
 
 @Stateless
-@Database
+@Alternative
 public class DatabaseFeedsRepository implements FeedsRepository {
 
 	@PersistenceContext

@@ -32,7 +32,7 @@ import pl.marchwicki.feedmanager.rs.RestFeedConsumerTest;
 import pl.marchwicki.feedmanager.ws.model.LogStats;
 
 @RunWith(Arquillian.class)
-public class FeedManagerContainerTest {
+public class FeedStatsSoapTest {
 
 	@Deployment
 	public static WebArchive createDeployment() throws Exception {

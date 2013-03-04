@@ -47,7 +47,12 @@ public class WebsocketInboundProducer {
 	private void broadcast(CharBuffer message) throws IOException {
 		logger.info("Connections available: {}", connections.size());
 		for (NotificationInbound inbound : connections) {
-			inbound.onTextMessage(message);
+			try {
+				inbound.onTextMessage(message);
+			} catch (Exception e) {
+				connections.remove(inbound);
+				logger.info("Removed stalled connection. Connections available: {}", connections.size());
+			}
 		}
 	}
 	

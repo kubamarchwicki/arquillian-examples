@@ -7,7 +7,9 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 @MappedSuperclass
 public class Feed {
 

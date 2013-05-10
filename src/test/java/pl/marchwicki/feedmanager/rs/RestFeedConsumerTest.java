@@ -59,7 +59,7 @@ public class RestFeedConsumerTest {
 	public void shouldParseXmlFeedTest(@ArquillianResource URL baseURL) throws Exception {
 		//given
 		DefaultHttpClient httpclient = new DefaultHttpClient();
-		HttpPost post = new HttpPost(baseURL.toURI() + "rs/consume/"+FEED_NAME);
+		HttpPost post = new HttpPost(baseURL.toURI() + "rs/feed/"+FEED_NAME);
 		post.setEntity(new StringEntity(rssParameterBody));  		
 		
 		//when

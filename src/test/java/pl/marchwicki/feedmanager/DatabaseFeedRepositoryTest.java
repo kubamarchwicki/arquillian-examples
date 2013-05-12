@@ -5,16 +5,13 @@ import static org.junit.Assert.*;
 
 import java.util.Date;
 
-import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.ArchivePaths;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,7 +37,6 @@ public class DatabaseFeedRepositoryTest {
 		return ShrinkWrap
 				.create(WebArchive.class, "test.war")
 				.addClass(DatabaseFeedsRepository.class)
-				.addClass(InMemoryFeedsRepository.class)
 				.addClasses(FeedEntity.class, ItemEntity.class)
 				.addAsResource("test-persistence.xml", "META-INF/persistence.xml")
 				.addAsResource("test-beans.xml", "META-INF/beans.xml");
@@ -65,6 +61,7 @@ public class DatabaseFeedRepositoryTest {
 		
 		//when
 		repository.addItem(FEED_NAME, f);
+
 		
 		assertThat(repository.getAllFeeds().size(), equalTo(1));
 		assertThat(repository.getFeed("various name"), equalTo(null));

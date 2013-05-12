@@ -31,7 +31,8 @@ public class FeedNotifierWebSocket extends WebSocketServlet {
 //	}
 	
 	@Override
-	protected StreamInbound createWebSocketInbound(String subProtocol) {
+	protected StreamInbound createWebSocketInbound(String arg0,
+			HttpServletRequest arg1) {
 		return producer.get();
 	}
 

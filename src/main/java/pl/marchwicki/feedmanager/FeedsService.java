@@ -46,4 +46,8 @@ public class FeedsService {
 		repository.addItem(feedname, feed);
 		return feed;
 	}
+
+	public Feed getFeed(String feedname) {
+		return repository.getFeed(feedname);
+	}
 }

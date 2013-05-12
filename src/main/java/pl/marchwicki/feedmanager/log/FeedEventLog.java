@@ -19,7 +19,7 @@ public class FeedEventLog {
 	private Integer itemsCount;
 	private Date date;
 
-	private FeedEventLog() {
+	public FeedEventLog() {
 		
 	}
 	

@@ -5,5 +5,5 @@
 	<alternatives>
 		<class>pl.marchwicki.feedmanager.DatabaseFeedsRepository</class>
 	</alternatives>
-
+ 
 </beans>

@@ -22,8 +22,8 @@ import pl.marchwicki.feedmanager.model.Item;
 @Entity
 @Table(name = "feeds")
 @NamedQueries({
-	@NamedQuery(name=FeedEntity.GET_ALL_FEEDS, query="from FeedEntity f"),
-	@NamedQuery(name=FeedEntity.GET_FEED_BY_FEEDNAME, query="from FeedEntity f where f.feedname = :feedname")
+	@NamedQuery(name=FeedEntity.GET_ALL_FEEDS, query="select f from FeedEntity f"),
+	@NamedQuery(name=FeedEntity.GET_FEED_BY_FEEDNAME, query="select f from FeedEntity f where f.feedname = :feedname")
 })
 public class FeedEntity extends Feed {
 

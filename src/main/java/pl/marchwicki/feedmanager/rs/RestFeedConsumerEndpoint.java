@@ -11,7 +11,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import pl.marchwicki.feedmanager.FeedsRepository;
 import pl.marchwicki.feedmanager.FeedsService;
 import pl.marchwicki.feedmanager.model.Feed;
 
@@ -21,25 +20,26 @@ public class RestFeedConsumerEndpoint {
 
 	@Inject
 	FeedsService service;
-	
-	@Inject
-	FeedsRepository repository;
-	
+
 	@Path("/feed/{feedname}")
 	@POST
-	public Response consume(@PathParam("feedname") String feedname, String messageBody) {
+	public Response consume(@PathParam("feedname") String feedname,
+			String messageBody) {
 		service.addNewItems(feedname, messageBody);
 		return Response.status(Status.CREATED).build();
 	}
-	
+
 	@Path("/feed/{feedname}")
 	@GET
-	@Produces(value={MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Produces(value = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public Response retrieve(@PathParam("feedname") String feedname) {
-		Feed feed = repository.getFeed(feedname);
-		return Response.status(Status.OK)
-				.entity(feed)
-				.build();
+		Feed feed = service.getFeed(feedname);
+
+		if (feed == null) {
+			return Response.status(Status.NOT_FOUND).build();
+		} else {
+			return Response.status(Status.OK).entity(feed).build();
+		}
 	}
-	
+
 }

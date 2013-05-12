@@ -9,10 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.interceptor.AroundInvoke;
-import javax.interceptor.InvocationContext;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -34,8 +31,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import pl.marchwicki.feedmanager.FeedsRepository;
-import pl.marchwicki.feedmanager.InMemoryFeedsRepository;
 import pl.marchwicki.feedmanager.FeedsService;
+import pl.marchwicki.feedmanager.InMemoryFeedsRepository;
 import pl.marchwicki.feedmanager.model.FeedBuilder;
 
 @RunWith(Arquillian.class)
@@ -52,7 +49,6 @@ public class ConsumerServletTest {
 				.create(WebArchive.class, "test.war")
 				.addClass(ConsumerServlet.class)
 				.addClass(FeedsService.class)
-				.addClass(FeedBodyLoggingInterceptorStub.class)
 				.addClass(FeedBuilder.class)
 				.addClass(InMemoryFeedsRepository.class)
 				.addAsWebInfResource(EmptyAsset.INSTANCE,
@@ -91,16 +87,6 @@ public class ConsumerServletTest {
 		assertThat(repository.getFeed(FEED_NAME).getItems().size(), equalTo(15));
 	}
 
-	@Stateless
-	public static class FeedBodyLoggingInterceptorStub {
-		
-		@AroundInvoke
-		public Object log(InvocationContext ctx) throws Exception {
-			return ctx.proceed();
-		}
-		
-	}
-	
 	@BeforeClass
 	public static void readXmlContent() throws Exception {
 		URL dir_url = ConsumerServletTest.class.getResource("/");

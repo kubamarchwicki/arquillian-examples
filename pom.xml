@@ -7,7 +7,7 @@
 	<packaging>war</packaging>
 
 	<properties>
-		<tomee.version>1.5.1</tomee.version>
+		<tomee.version>1.5.2</tomee.version>
 	</properties>
 
 	<dependencyManagement>
@@ -51,19 +51,7 @@
 			<version>1.7.5</version>
 		</dependency>
 
-		<!-- websockets -->
-		<dependency>
-			<groupId>org.apache.tomcat</groupId>
-			<artifactId>tomcat-catalina</artifactId>
-			<version>7.0.27</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.tomcat</groupId>
-			<artifactId>tomcat-coyote</artifactId>
-			<version>7.0.27</version>
-			<scope>provided</scope>
-		</dependency>
+		<!-- tests -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -98,11 +86,12 @@
 			<artifactId>arquillian-container-spi</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.apache.openejb</groupId>
 			<artifactId>arquillian-tomee-embedded</artifactId>
 			<version>${tomee.version}</version>
-			<scope>test</scope>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- container specific test jars -->

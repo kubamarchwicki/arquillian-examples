@@ -7,12 +7,10 @@ import java.io.File;
 import java.net.URL;
 import java.util.Scanner;
 
-import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.interceptor.AroundInvoke;
-import javax.interceptor.InvocationContext;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -28,8 +26,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import pl.marchwicki.feedmanager.FeedsRepository;
-import pl.marchwicki.feedmanager.InMemoryFeedsRepository;
 import pl.marchwicki.feedmanager.FeedsService;
+import pl.marchwicki.feedmanager.InMemoryFeedsRepository;
 import pl.marchwicki.feedmanager.model.FeedBuilder;
 import pl.marchwicki.feedmanager.ws.LoggingStats;
 
@@ -48,7 +46,6 @@ public class RestFeedConsumerTest {
 				.addClass(RestFeedConsumerEndpoint.class)
 				.addClass(FeedsService.class)
 				.addClass(LoggingStats.class)
-				.addClass(FeedBodyLoggingInterceptorStub.class)
 				.addClass(FeedBuilder.class)
 				.addClass(InMemoryFeedsRepository.class)
 				.addAsWebInfResource(EmptyAsset.INSTANCE,
@@ -69,16 +66,6 @@ public class RestFeedConsumerTest {
 		assertThat(response.getStatusLine().getStatusCode(), equalTo(201));
 		assertThat(repository.getAllFeeds().size(), equalTo(1));
 		assertThat(repository.getFeed(FEED_NAME).getItems().size(), equalTo(15));
-	}
-	
-	@Stateless
-	public static class FeedBodyLoggingInterceptorStub {
-		
-		@AroundInvoke
-		public Object log(InvocationContext ctx) throws Exception {
-			return ctx.proceed();
-		}
-		
 	}
 	
 	@BeforeClass

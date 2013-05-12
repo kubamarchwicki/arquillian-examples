@@ -11,9 +11,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
-import org.jboss.shrinkwrap.api.ArchivePaths;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -33,8 +31,7 @@ public class RestFeedRetrieveDatabaseTest {
 		return ShrinkWrap
 				.create(WebArchive.class, "test.war")
 				.addClass(RestFeedConsumerEndpoint.class)
-				.addClass(FeedsService.class)
-				.addClass(FeedBuilder.class)
+				.addClasses(FeedsService.class, FeedBuilder.class)
 				.addClass(DatabaseFeedsRepository.class)
 				.addAsResource("test-persistence.xml", "META-INF/persistence.xml")
 				.addAsResource("test-beans.xml", "META-INF/beans.xml");

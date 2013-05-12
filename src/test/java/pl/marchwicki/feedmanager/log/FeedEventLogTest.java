@@ -2,7 +2,7 @@ package pl.marchwicki.feedmanager.log;
 
 import static com.jayway.awaitility.Awaitility.*;
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*; 
+import static org.junit.Assert.*;
 
 import java.io.File;
 import java.net.URL;
@@ -23,8 +23,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import pl.marchwicki.feedmanager.InMemoryFeedsRepository;
 import pl.marchwicki.feedmanager.FeedsService;
+import pl.marchwicki.feedmanager.InMemoryFeedsRepository;
 import pl.marchwicki.feedmanager.model.FeedBuilder;
 import pl.marchwicki.feedmanager.rs.RestFeedConsumerTest;
 
@@ -42,10 +42,8 @@ public class FeedEventLogTest {
 	public static WebArchive createDeployment() throws Exception {
 		return ShrinkWrap
 				.create(WebArchive.class, "test.war")
-				.addClass(FeedBuilder.class)
-				.addClass(FeedsService.class)
+				.addClasses(FeedsService.class, FeedBuilder.class)
 				.addClass(InMemoryFeedsRepository.class)
-				.addClass(FeedBodyLoggingInterceptor.class)
 				.addClass(EventListener.class)
 				.addAsWebInfResource(EmptyAsset.INSTANCE,
 						ArchivePaths.create("beans.xml"));

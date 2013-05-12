@@ -32,8 +32,7 @@ public class RestFeedRetrieveTest {
 		return ShrinkWrap
 				.create(WebArchive.class, "test.war")
 				.addClass(RestFeedConsumerEndpoint.class)
-				.addClass(FeedsService.class)
-				.addClass(FeedBuilder.class)
+				.addClasses(FeedsService.class, FeedBuilder.class)
 				.addClass(InMemoryFeedsRepository.class)
 				.addAsWebInfResource(EmptyAsset.INSTANCE,
 						ArchivePaths.create("beans.xml"));

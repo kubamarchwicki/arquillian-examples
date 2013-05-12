@@ -10,7 +10,6 @@ import java.util.Scanner;
 import javax.inject.Inject;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -29,7 +28,6 @@ import pl.marchwicki.feedmanager.FeedsRepository;
 import pl.marchwicki.feedmanager.FeedsService;
 import pl.marchwicki.feedmanager.InMemoryFeedsRepository;
 import pl.marchwicki.feedmanager.model.FeedBuilder;
-import pl.marchwicki.feedmanager.ws.LoggingStats;
 
 @RunWith(Arquillian.class)
 public class RestFeedConsumerTest {
@@ -44,9 +42,7 @@ public class RestFeedConsumerTest {
 		return ShrinkWrap
 				.create(WebArchive.class, "test.war")
 				.addClass(RestFeedConsumerEndpoint.class)
-				.addClass(FeedsService.class)
-				.addClass(LoggingStats.class)
-				.addClass(FeedBuilder.class)
+				.addClasses(FeedsService.class, FeedBuilder.class)
 				.addClass(InMemoryFeedsRepository.class)
 				.addAsWebInfResource(EmptyAsset.INSTANCE,
 						ArchivePaths.create("beans.xml"));

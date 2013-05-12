@@ -48,8 +48,7 @@ public class ConsumerServletTest {
 		return ShrinkWrap
 				.create(WebArchive.class, "test.war")
 				.addClass(ConsumerServlet.class)
-				.addClass(FeedsService.class)
-				.addClass(FeedBuilder.class)
+				.addClasses(FeedsService.class, FeedBuilder.class)
 				.addClass(InMemoryFeedsRepository.class)
 				.addAsWebInfResource(EmptyAsset.INSTANCE,
 						ArchivePaths.create("beans.xml"));

@@ -45,6 +45,7 @@ public class FeedServiceIntegrationTest {
 	public void shouldThrowParsingExceptionOnEmptyFeed() {
 		try {
 			service.addNewItems(FEED_NAME, "");
+			fail("Should have got exception");
 		} catch (EJBException e) {
 			assertEquals(IllegalArgumentException.class, e.getCausedByException().getClass());
 		}

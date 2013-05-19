@@ -7,7 +7,7 @@
 	<packaging>war</packaging>
 
 	<properties>
-		<tomee.version>1.5.2</tomee.version>
+		<jboss.version>7.2.0.Final</jboss.version>
 	</properties>
 
 	<dependencyManagement>
@@ -87,24 +87,23 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.apache.openejb</groupId>
-			<artifactId>arquillian-tomee-embedded</artifactId>
-			<version>${tomee.version}</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<!-- container specific test jars -->
+<dependency>
+	<groupId>org.jboss.as</groupId>
+	<artifactId>jboss-as-arquillian-container-embedded</artifactId>
+	<version>${jboss.version}</version>
+</dependency>
+            
+		<!-- container specific test jars 
 		<dependency>
 			<groupId>org.apache.openejb</groupId>
 			<artifactId>tomee-jaxrs</artifactId>
-			<version>${tomee.version}</version>
+			<version>${jboss.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.openejb</groupId>
 			<artifactId>tomee-webservices</artifactId>
-			<version>${tomee.version}</version>
+			<version>${jboss.version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -121,7 +120,7 @@
 			<version>4.0.0.Final</version>
 			<scope>test</scope>
 		</dependency>
-
+-->
 		<!-- JEE6 profile -->
 		<dependency>
 			<groupId>javax</groupId>

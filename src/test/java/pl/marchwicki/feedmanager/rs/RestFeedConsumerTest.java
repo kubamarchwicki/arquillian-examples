@@ -14,6 +14,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.ArchivePaths;
@@ -49,6 +50,7 @@ public class RestFeedConsumerTest {
 	}
 
 	@Test
+	@RunAsClient
 	public void shouldParseXmlFeedTest(@ArquillianResource URL baseURL) throws Exception {
 		//given
 		DefaultHttpClient httpclient = new DefaultHttpClient();

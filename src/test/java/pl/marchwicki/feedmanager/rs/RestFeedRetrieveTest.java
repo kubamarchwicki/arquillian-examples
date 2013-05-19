@@ -9,6 +9,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.ArchivePaths;
@@ -27,7 +28,7 @@ public class RestFeedRetrieveTest {
 
 	private final String FEED_NAME = "javalobby";
 	
-	@Deployment
+	@Deployment(testable=false)
 	public static WebArchive createDeployment() throws Exception {
 		return ShrinkWrap
 				.create(WebArchive.class, "test.war")
@@ -39,6 +40,7 @@ public class RestFeedRetrieveTest {
 	}
 
 	@Test
+	@RunAsClient
 	public void shouldReturnNotFoundForNoFeedsTest(@ArquillianResource URL baseURL) throws Exception {
 		//given
 		DefaultHttpClient httpclient = new DefaultHttpClient();

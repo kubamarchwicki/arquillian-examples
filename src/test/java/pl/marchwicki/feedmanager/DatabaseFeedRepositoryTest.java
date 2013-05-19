@@ -36,7 +36,7 @@ public class DatabaseFeedRepositoryTest {
 	public static WebArchive createDeployment() throws Exception {
 		return ShrinkWrap
 				.create(WebArchive.class, "test.war")
-				.addClass(DatabaseFeedsRepository.class)
+				.addClasses(FeedsRepository.class, DatabaseFeedsRepository.class)
 				.addClasses(FeedEntity.class, ItemEntity.class)
 				.addAsResource("test-persistence.xml", "META-INF/persistence.xml")
 				.addAsResource("test-beans.xml", "META-INF/beans.xml");

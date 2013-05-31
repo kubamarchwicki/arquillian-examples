@@ -22,8 +22,10 @@ import org.apache.http.util.EntityUtils;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.junit.InSequence;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -48,11 +50,13 @@ public class ConsumerServletTest {
 				.create(WebArchive.class, "test.war")
 				.addClass(ConsumerServlet.class)
 				.addClasses(FeedsService.class, FeedBuilder.class)
-				.addClass(InMemoryFeedsRepository.class);
+				.addClass(InMemoryFeedsRepository.class)
+				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
 	}
 
 	@Test
 	@RunAsClient
+	@InSequence(1)
 	public void shouldReturn405OnGetTest(@ArquillianResource URL baseURL)
 			throws Exception {
 		DefaultHttpClient httpclient = new DefaultHttpClient();
@@ -63,6 +67,7 @@ public class ConsumerServletTest {
 
 	@Test
 	@RunAsClient
+	@InSequence(2)
 	public void shouldParseXmlFeedTest(@ArquillianResource URL baseURL)
 			throws Exception {
 		// given
@@ -80,11 +85,15 @@ public class ConsumerServletTest {
 		assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
 		assertThat(EntityUtils.toString(response.getEntity()),
 				equalTo("There are 15 articles in the feed"));
+	}
 
+	@Test
+	@InSequence(3)
+	public void shouldInsertDataToRepository() {
 		assertThat(repository.getAllFeeds().size(), equalTo(1));
 		assertThat(repository.getFeed(FEED_NAME).getItems().size(), equalTo(15));
 	}
-
+	
 	@BeforeClass
 	public static void readXmlContent() throws Exception {
 		URL dir_url = ConsumerServletTest.class.getResource("/");

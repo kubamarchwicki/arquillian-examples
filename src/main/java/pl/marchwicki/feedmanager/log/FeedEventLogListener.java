@@ -3,12 +3,12 @@ package pl.marchwicki.feedmanager.log;
 import java.util.logging.Logger;
 
 import javax.ejb.Asynchronous;
+import javax.ejb.Stateless;
 import javax.enterprise.event.Observes;
-import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-@Named
+@Stateless
 public class FeedEventLogListener {
 
 	private final static Logger logger = Logger.getLogger(FeedEventLogListener.class.getName());

@@ -13,7 +13,9 @@ import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 
 import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.junit.InSequence;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.ArchivePaths;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -34,6 +36,8 @@ import pl.marchwicki.feedmanager.ws.model.LogStats;
 @RunWith(Arquillian.class)
 public class FeedStatsSoapTest {
 
+	final String feedname = "something";
+
 	@Deployment
 	public static WebArchive createDeployment() throws Exception {
 		return ShrinkWrap
@@ -51,21 +55,30 @@ public class FeedStatsSoapTest {
 	
 	@Inject
 	FeedsService service;
+
+	@Test
+	@InSequence(1)
+	public void shouldCreateTestData() {
+		//given feed
+		service.addNewItems(feedname, rssParameterBody);
+	}
 	
 	@Test 
+	@RunAsClient
+	@InSequence(2)
 	public void shouldReturnLogStatsForSingleFeed(@ArquillianResource URL baseURL) throws Exception {
-		//given feed
-		final String feedname = "something";
-		service.addNewItems(feedname, rssParameterBody);
-		
 		//given endpoint
-	    URL wsdlDocumentLocation = new URL(baseURL.toExternalForm() + "webservices/LoggingStatsWS?wsdl");
+		URL wsdlDocumentLocation = new URL("http://" 
+				+ baseURL.getHost() + ":"
+				+ baseURL.getPort()
+				+ "/LoggingStatsWSService/LoggingStatsWS?wsdl");
 	    String namespaceURI = "http://ws.feedmanager.marchwicki.pl/";
 	    String servicePart = "LoggingStatsWSService";
+	    String servicePort = "LoggingStatsWSPort";
 	    QName serviceQN = new QName(namespaceURI, servicePart);
 		
 	    Service service = Service.create(wsdlDocumentLocation, serviceQN);
-	    LoggingStats stats = service.getPort(LoggingStats.class);
+	    LoggingStats stats = service.getPort(new QName(namespaceURI, servicePort), LoggingStats.class);
 	    
 	    //when
 	    LogStats[] statData = stats.getStats();

@@ -100,6 +100,18 @@
 			<artifactId>shrinkwrap-descriptors-impl-javaee</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.jboss.arquillian.extension</groupId>
+			<artifactId>arquillian-persistence-api</artifactId>
+			<version>1.0.0.Alpha6</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.arquillian.extension</groupId>
+			<artifactId>arquillian-persistence-impl</artifactId>
+			<version>1.0.0.Alpha6</version>
+			<scope>test</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>org.hibernate</groupId>

@@ -10,8 +10,10 @@ import javax.inject.Inject;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.asset.StringAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
-import org.junit.Ignore;
+import org.jboss.shrinkwrap.descriptor.api.Descriptors;
+import org.jboss.shrinkwrap.descriptor.api.beans10.BeansDescriptor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -27,23 +29,27 @@ public class DatabaseFeedRepositoryTest {
 
 	@Deployment
 	public static WebArchive createDeployment() throws Exception {
+		BeansDescriptor descriptor = Descriptors.create(BeansDescriptor.class)
+				.createAlternatives()
+					.clazz(DatabaseFeedsRepository.class.getName())
+					.up();
+		
 		return ShrinkWrap
 				.create(WebArchive.class, "test.war")
 				.addClasses(FeedsRepository.class,
-						InMemoryFeedsRepository.class,
-						DatabaseFeedsRepository.class)
+						DatabaseFeedsRepository.class,
+						InMemoryFeedsRepository.class)
 				.addClasses(FeedEntity.class, ItemEntity.class)
 				.addClasses(Feed.class, Item.class)
+				.addAsWebInfResource(new StringAsset(descriptor.exportAsString()), "beans.xml")
 				.addAsResource("test-persistence.xml",
-						"META-INF/persistence.xml")
-				.addAsResource("test-beans.xml", "META-INF/beans.xml");
+						"META-INF/persistence.xml");
 	}
 
 	@Inject
 	FeedsRepository repository;
 
 	@Test
-	@Ignore(value="I really don't know why repository throws NPE")
 	public void shouldPersistFeed() {
 		// given
 		Feed f = new Feed.Builder().withTitle("test")

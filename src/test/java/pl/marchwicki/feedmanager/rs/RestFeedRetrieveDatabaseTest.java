@@ -89,6 +89,7 @@ public class RestFeedRetrieveDatabaseTest {
 	
 	@Test
 	@InSequence(2)
+	@RunAsClient
 	public void shouldReturnNotFoundForNoFeedsTest(@ArquillianResource URL baseURL) throws Exception {
 		//given
 		DefaultHttpClient httpclient = new DefaultHttpClient();

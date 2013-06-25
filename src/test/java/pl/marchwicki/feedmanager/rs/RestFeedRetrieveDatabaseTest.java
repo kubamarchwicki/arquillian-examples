@@ -5,13 +5,17 @@ import static org.junit.Assert.*;
 
 import java.net.URL;
 
+import javax.inject.Inject;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.junit.InSequence;
+import org.jboss.arquillian.persistence.UsingDataSet;
 import org.jboss.arquillian.test.api.ArquillianResource;
+import org.jboss.shrinkwrap.api.ArchivePaths;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.StringAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
@@ -34,9 +38,13 @@ import pl.marchwicki.feedmanager.model.entities.ItemEntity;
 import com.sun.jersey.spi.container.servlet.ServletContainer;
 
 @RunWith(Arquillian.class)
+@Ignore
 public class RestFeedRetrieveDatabaseTest {
 
 	private final String FEED_NAME = "javalobby";
+	
+	@Inject
+	FeedsRepository repository;
 	
 	@Deployment
 	public static WebArchive createDeployment() throws Exception {
@@ -64,13 +72,23 @@ public class RestFeedRetrieveDatabaseTest {
 				.addClasses(Feed.class, FeedEntity.class, Item.class, ItemEntity.class)
 				.addAsResource("test-persistence.xml", "META-INF/persistence.xml")
 				.addAsWebInfResource(new StringAsset(descriptor.exportAsString()), "beans.xml")
+				.addAsResource("log4j.properties", ArchivePaths.create("log4j.properties"))
 				.setWebXML(new StringAsset(web.exportAsString()));
 	}
 
 	@Test
-	@RunAsClient 
-	@Ignore(value="Existing feed not implemented")
-//	@UsingDataSet("feeds.yml")
+	@InSequence(1)
+	@UsingDataSet("datasets/feeds.yml")
+	public void findFeedById() {
+		Feed feed = repository.getFeed("javalobby");
+		
+		assertThat(feed, is(notNullValue()));
+		assertThat(feed.getLink(), equalTo("http://java.dzone.com"));
+	}
+	
+	
+	@Test
+	@InSequence(2)
 	public void shouldReturnNotFoundForNoFeedsTest(@ArquillianResource URL baseURL) throws Exception {
 		//given
 		DefaultHttpClient httpclient = new DefaultHttpClient();

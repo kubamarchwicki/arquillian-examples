@@ -1,13 +1,17 @@
-feed:
+feeds:
   - feedId: 1
     title: javalobby
+    feedname: javalobby
     link: http://java.dzone.com
     
-item:
+items:
   - itemId: 1
     title: first entry
     feedId: 1
+    content: "cannot be null"
+    link: "cannot be null"
   - itemId: 2
     title: second entry
     feedId: 1
-    
+    content: "cannot be null"
+    link: "cannot be null"

@@ -11,7 +11,7 @@
 			<dependency>
 				<groupId>org.jboss.arquillian</groupId>
 				<artifactId>arquillian-bom</artifactId>
-				<version>1.0.0.Final</version>
+				<version>1.0.3.Final</version>
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>
@@ -105,12 +105,6 @@
 		<dependency>
 			<groupId>org.jboss.shrinkwrap.descriptors</groupId>
 			<artifactId>shrinkwrap-descriptors-impl-javaee</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.arquillian.extension</groupId>
-			<artifactId>arquillian-persistence-api</artifactId>
-			<version>1.0.0.Alpha6</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>

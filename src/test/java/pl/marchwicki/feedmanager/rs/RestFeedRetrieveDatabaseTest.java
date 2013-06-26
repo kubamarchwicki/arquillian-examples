@@ -11,6 +11,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.junit.InSequence;
 import org.jboss.arquillian.persistence.UsingDataSet;
@@ -38,7 +39,6 @@ import pl.marchwicki.feedmanager.model.entities.ItemEntity;
 import com.sun.jersey.spi.container.servlet.ServletContainer;
 
 @RunWith(Arquillian.class)
-@Ignore
 public class RestFeedRetrieveDatabaseTest {
 
 	private final String FEED_NAME = "javalobby";
@@ -99,7 +99,7 @@ public class RestFeedRetrieveDatabaseTest {
 		HttpResponse response = httpclient.execute(get);
 		
 		//then
-		assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+		assertThat(response.getStatusLine().getStatusCode(), equalTo(404));
 	}
 	
 }

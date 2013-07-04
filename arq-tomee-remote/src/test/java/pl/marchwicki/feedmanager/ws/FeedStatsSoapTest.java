@@ -42,7 +42,8 @@ public class FeedStatsSoapTest {
 	@Deployment
 	public static WebArchive createDeployment() throws Exception {
 		File[] libs = Maven.resolver().loadPomFromFile("pom.xml")
-				.resolve("org.hibernate:hibernate-entitymanager", "rome:rome")
+				.resolve("org.hibernate:hibernate-entitymanager", 
+						"rome:rome:0.9")
 				.withTransitivity().asFile();
 
 		return ShrinkWrap

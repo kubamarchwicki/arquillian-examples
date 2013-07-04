@@ -45,7 +45,7 @@ public class FeedEventLogTest {
 	@Deployment
 	public static WebArchive createDeployment() throws Exception {
 		File[] libs = Maven.resolver().loadPomFromFile("pom.xml")
-				.resolve("com.jayway.awaitility:awaitility", "rome:rome")
+				.resolve("com.jayway.awaitility:awaitility", "rome:rome:0.9")
 				.withTransitivity().asFile();
 
 		return ShrinkWrap

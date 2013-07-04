@@ -46,7 +46,9 @@ public class RestFeedConsumerTest {
 	@Deployment
 	public static WebArchive createDeployment() throws Exception {
 		File[] libs = Maven.resolver().loadPomFromFile("pom.xml")
-				.resolve("org.hibernate:hibernate-entitymanager", "org.apache.httpcomponents:httpclient", "rome:rome")
+				.resolve("org.hibernate:hibernate-entitymanager", 
+						"org.apache.httpcomponents:httpclient", 
+						"rome:rome:0.9")
 				.withTransitivity().asFile();
 
 		return ShrinkWrap

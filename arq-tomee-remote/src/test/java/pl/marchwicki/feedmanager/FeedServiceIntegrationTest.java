@@ -14,11 +14,8 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.resolver.api.maven.Maven;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
-import org.xml.sax.SAXParseException;
 
 import pl.marchwicki.feedmanager.log.FeedBodyLoggingInterceptor;
 import pl.marchwicki.feedmanager.log.FeedEventLog;
@@ -34,7 +31,7 @@ public class FeedServiceIntegrationTest {
 	@Deployment
 	public static WebArchive deployment() {
 		File[] libs = Maven.resolver().loadPomFromFile("pom.xml")
-				.resolve("rome:rome").withTransitivity()
+				.resolve("rome:rome:0.9").withTransitivity()
 				.asFile();
 		
 		return ShrinkWrap.create(WebArchive.class, "test.war")

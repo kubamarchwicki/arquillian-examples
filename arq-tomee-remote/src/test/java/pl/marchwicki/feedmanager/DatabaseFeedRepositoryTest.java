@@ -40,7 +40,7 @@ public class DatabaseFeedRepositoryTest {
 	public static WebArchive createDeployment() throws Exception {
 		
 		String[] deps = {"org.hibernate:hibernate-entitymanager", 
-				"com.google.collections:google-collections"
+				"com.google.collections:google-collections:1.0"
 		};
 		
 		File[] libs = Maven.resolver().loadPomFromFile("pom.xml")

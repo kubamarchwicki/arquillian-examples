@@ -39,9 +39,9 @@ public class RestFeedRetrieveDatabaseTest {
 	@Deployment
 	public static WebArchive createDeployment() throws Exception {
 		String[] deps = { "org.hibernate:hibernate-entitymanager",
-				"com.google.collections:google-collections",
 				"org.apache.httpcomponents:httpclient",
-				"rome:rome"};
+				"com.google.collections:google-collections:1.0",
+				"rome:rome:0.9"};
 
 		File[] libs = Maven.resolver().loadPomFromFile("pom.xml").resolve(deps)
 				.withTransitivity().asFile();

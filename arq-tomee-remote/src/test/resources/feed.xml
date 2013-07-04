@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/rss2full.xsl"?><?xml-stylesheet type="text/css" media="screen" href="http://feeds.dzone.com/~d/styles/itemcontent.css"?>
+<rss xmlns:dz="http://www.developerzone.com/modules/dz/1.0"
+	xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" version="2.0"
+	xml:base="http://java.dzone.com/">
+	<channel>
+		<title>Javalobby - The heart of the Java developer community</title>
+		<link>http://java.dzone.com/</link>
+		<description />
+		<language>en</language>
+		<feedburner:info uri="javalobby/frontpage" />
+		<atom10:link xmlns:atom10="http://www.w3.org/2005/Atom"
+			rel="hub" href="http://pubsubhubbub.appspot.com/" />
+		<atom10:link xmlns:atom10="http://www.w3.org/2005/Atom"
+			rel="self" type="application/rss+xml" href="http://www.javalobby.org/forumRSS/61.xml" />
+		<feedburner:feedFlare
+			href="http://add.my.yahoo.com/rss?url=http%3A%2F%2Fwww.javalobby.org%2FforumRSS%2F61.xml"
+			src="http://us.i1.yimg.com/us.yimg.com/i/us/my/addtomyyahoo4.gif">Subscribe with My Yahoo!</feedburner:feedFlare>
+		<feedburner:feedFlare
+			href="http://www.newsgator.com/ngs/subscriber/subext.aspx?url=http%3A%2F%2Fwww.javalobby.org%2FforumRSS%2F61.xml"
+			src="http://www.newsgator.com/images/ngsub1.gif">Subscribe with NewsGator</feedburner:feedFlare>
+		<feedburner:feedFlare
+			href="http://feeds.my.aol.com/add.jsp?url=http%3A%2F%2Fwww.javalobby.org%2FforumRSS%2F61.xml"
+			src="http://o.aolcdn.com/favorites.my.aol.com/webmaster/ffclient/webroot/locale/en-US/images/myAOLButtonSmall.gif">Subscribe with My AOL</feedburner:feedFlare>
+		<feedburner:feedFlare
+			href="http://www.bloglines.com/sub/http://www.javalobby.org/forumRSS/61.xml"
+			src="http://www.bloglines.com/images/sub_modern11.gif">Subscribe with Bloglines</feedburner:feedFlare>
+		<feedburner:feedFlare
+			href="http://www.netvibes.com/subscribe.php?url=http%3A%2F%2Fwww.javalobby.org%2FforumRSS%2F61.xml"
+			src="http://www.netvibes.com/img/add2netvibes.gif">Subscribe with Netvibes</feedburner:feedFlare>
+		<feedburner:feedFlare
+			href="http://fusion.google.com/add?feedurl=http%3A%2F%2Fwww.javalobby.org%2FforumRSS%2F61.xml"
+			src="http://buttons.googlesyndication.com/fusion/add.gif">Subscribe with Google</feedburner:feedFlare>
+		<feedburner:feedFlare
+			href="http://www.pageflakes.com/subscribe.aspx?url=http%3A%2F%2Fwww.javalobby.org%2FforumRSS%2F61.xml"
+			src="http://www.pageflakes.com/ImageFile.ashx?instanceId=Static_4&amp;fileName=ATP_blu_91x17.gif">Subscribe with Pageflakes</feedburner:feedFlare>
+		<item>
+			<title>Drupal 7 to Jekyll, an Epic Journey</title>
+			<link>http://feeds.dzone.com/~r/javalobby/frontpage/~3/IJqEhJzAQrc/drupal-7-jekyll-epic-journey</link>
+			<description>There’s a recent trend in blogging that consists of
+				dropping PHP platforms such as WordPress and Drupal in factor of
+				static HTML pages generated when needed.
+				Static blogs have many advantages over PHP engines:
+				Preview Text:&amp;nbsp;
+
+
+				There’s a recent trend in blogging that consists of dropping PHP platforms
+				such as WordPress and Drupal in factor of...&lt;img
+				src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/IJqEhJzAQrc"
+				height="1" width="1"/&gt;</description>
+			<comments>http://java.dzone.com/articles/drupal-7-jekyll-epic-journey#comments</comments>
+			<category domain="http://java.dzone.com/category/tags/blog">blog</category>
+			<category domain="http://java.dzone.com/category/tags/drupal">drupal</category>
+			<category domain="http://java.dzone.com/category/tags/jekyll">jekyll</category>
+			<category domain="http://java.dzone.com/category/content-form/opinion">Opinion</category>
+			<category
+				domain="http://java.dzone.com/category/dzone-taxonomy/java/frameworks">Frameworks</category>
+			<wfw:commentRss xmlns:wfw="http://wellformedweb.org/CommentAPI/">http://java.dzone.com/crss/node/123221</wfw:commentRss>
+			<dz:submitDate>Mon, 26 Nov 2012 02:39:14 -0500</dz:submitDate>
+			<dz:readCount>366</dz:readCount>
+			<dz:commentCount>0</dz:commentCount>
+			<dz:thumbnail>http://cdn.dzone.com/sites/all/files/preview-images/November/drupal-logo_0.gif</dz:thumbnail>
+			<dz:submitter>
+				<dz:username>nfrankel</dz:username>
+				<dz:userimage>http://java.dzone.com/sites/all/files/avatars/picture-293758.jpg</dz:userimage>
+			</dz:submitter>
+			<pubDate>Mon, 26 Nov 2012 07:39:14 +0000</pubDate>
+			<dc:creator>nfrankel</dc:creator>
+			<guid isPermaLink="false">123221 at http://java.dzone.com</guid>
+			<feedburner:origLink>http://java.dzone.com/articles/drupal-7-jekyll-epic-journey</feedburner:origLink>
+		</item>
+		<item>
+			<title>Inspections are not Optional </title>
+			<link>http://feeds.dzone.com/~r/javalobby/frontpage/~3/KyvXDnyuSLo/inspections-are-not-optional</link>
+			<description>Every developer is aware that code inspections are
+				possible, some might have experienced the usefulness of code
+				inspections, however, the fact is that inspections are not optional.
+
+				Without inspections your defect removal rate will stall out at 85%
+				of defects removed; with inspections defect removal rates of 97%
+				have been achieved.
+				Preview Text:&amp;nbsp;
+
+
+				...&lt;img
+				src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/KyvXDnyuSLo"
+				height="1" width="1"/&gt;</description>
+			<comments>http://java.dzone.com/articles/inspections-are-not-optional#comments</comments>
+			<category domain="http://java.dzone.com/category/tags/code-quality">Code Quality</category>
+			<category domain="http://java.dzone.com/category/content-form/opinion">Opinion</category>
+			<category domain="http://java.dzone.com/category/tags/software-defects">Software defects</category>
+			<category
+				domain="http://java.dzone.com/category/dzone-taxonomy/tools-methods">Tools &amp; Methods</category>
+			<wfw:commentRss xmlns:wfw="http://wellformedweb.org/CommentAPI/">http://java.dzone.com/crss/node/122895</wfw:commentRss>
+			<dz:submitDate>Mon, 26 Nov 2012 01:32:50 -0500</dz:submitDate>
+			<dz:readCount>366</dz:readCount>
+			<dz:commentCount>0</dz:commentCount>
+			<dz:thumbnail>http://cdn.dzone.com/sites/all/files/preview-images/November/BridgeFailSmall2_1.jpg</dz:thumbnail>
+			<dz:submitter>
+				<dz:username>dmahal</dz:username>
+				<dz:userimage>http://java.dzone.com/sites/all/files/avatars/picture-1022539.jpg</dz:userimage>
+			</dz:submitter>
+			<pubDate>Mon, 26 Nov 2012 06:32:50 +0000</pubDate>
+			<dc:creator>dmahal</dc:creator>
+			<guid isPermaLink="false">122895 at http://java.dzone.com</guid>
+			<feedburner:origLink>http://java.dzone.com/articles/inspections-are-not-optional</feedburner:origLink>
+		</item>
+		<item>
+			<title>How to Test a Custom Exception Using Custom FEST Assertions </title>
+			<link>http://feeds.dzone.com/~r/javalobby/frontpage/~3/kxmHgSZj43k/how-test-custom-exception</link>
+			<description>&amp;nbsp;
+				Preview Text:&amp;nbsp;
+
+
+				Building off of the last post, you will see that ExpectedException is a
+				great improvement over the @Test(expected) and Try/Catch techniques,
+				however the ExpectedException object can still be improved by adding
+				in a fluent-style API backed by Fest Assertion project.
+
+
+				Legacy
+				Sponsored:&amp;nbsp;
+
+				...&lt;img
+				src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/kxmHgSZj43k"
+				height="1" width="1"/&gt;</description>
+			<comments>http://java.dzone.com/articles/how-test-custom-exception#comments</comments>
+			<category domain="http://java.dzone.com/category/tags/fest">fest</category>
+			<category domain="http://java.dzone.com/category/dzone-taxonomy/java">Java</category>
+			<category domain="http://java.dzone.com/category/tags/testing">testing</category>
+			<category
+				domain="http://java.dzone.com/category/content-form/tips-and-tricks">Tips and Tricks</category>
+			<category
+				domain="http://java.dzone.com/category/dzone-taxonomy/tools-methods/testing">Testing</category>
+			<wfw:commentRss xmlns:wfw="http://wellformedweb.org/CommentAPI/">http://java.dzone.com/crss/node/122997</wfw:commentRss>
+			<dz:submitDate>Mon, 26 Nov 2012 01:12:12 -0500</dz:submitDate>
+			<dz:readCount>312</dz:readCount>
+			<dz:commentCount>0</dz:commentCount>
+			<dz:thumbnail>http://cdn.dzone.com/sites/all/files/preview-images/November/sw_testing_0.jpg</dz:thumbnail>
+			<dz:submitter>
+				<dz:username>mikeensor</dz:username>
+				<dz:userimage>http://java.dzone.com/sites/all/files/avatars/picture-963041.jpg</dz:userimage>
+			</dz:submitter>
+			<pubDate>Mon, 26 Nov 2012 06:12:12 +0000</pubDate>
+			<dc:creator>mikeensor</dc:creator>
+			<guid isPermaLink="false">122997 at http://java.dzone.com</guid>
+			<feedburner:origLink>http://java.dzone.com/articles/how-test-custom-exception</feedburner:origLink>
+		</item>
+		<item>
+			<title>Enterprise-ready Tool Support for Apache Camel</title>
+			<link>http://feeds.dzone.com/~r/javalobby/frontpage/~3/FdWgJ2VFUdM/enterprise-ready-tool-support</link>
+			<description>Apache Camel is my favorite integration framework on the
+				Java
+				platform due to great DSLs, a huge community, and so many different
+				components. Camel is used by many developers from different
+				companies
+				all over the world. However, most guys are not aware that some really
+				cool and – more important – enterprise-ready tooling is available
+				for
+				Camel, too. Many people ask me about Camel tooling...&lt;img
+				src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/FdWgJ2VFUdM"
+				height="1" width="1"/&gt;</description>
+			<comments>http://java.dzone.com/articles/enterprise-ready-tool-support#comments</comments>
+			<category domain="http://java.dzone.com/category/tags/apache-camel">Apache Camel</category>
+			<category domain="http://java.dzone.com/category/tags/eip">EIP</category>
+			<category
+				domain="http://java.dzone.com/category/tags/enterprise-service-bus">Enterprise Service Bus</category>
+			<category domain="http://java.dzone.com/category/tags/esb">esb</category>
+			<category domain="http://java.dzone.com/category/tags/fusesource">fusesource</category>
+			<category domain="http://java.dzone.com/category/dzone-taxonomy/java">Java</category>
+			<category domain="http://java.dzone.com/category/tags/jboss">JBoss</category>
+			<category domain="http://java.dzone.com/category/tags/talend">Talend</category>
+			<category
+				domain="http://java.dzone.com/category/dzone-taxonomy/architecture/integration">Integration</category>
+			<category
+				domain="http://java.dzone.com/category/dzone-taxonomy/architecture">Architecture</category>
+			<wfw:commentRss xmlns:wfw="http://wellformedweb.org/CommentAPI/">http://java.dzone.com/crss/node/123189</wfw:commentRss>
+			<dz:submitDate>Mon, 26 Nov 2012 01:11:44 -0500</dz:submitDate>
+			<dz:readCount>649</dz:readCount>
+			<dz:commentCount>0</dz:commentCount>
+			<dz:thumbnail>http://cdn.dzone.com/sites/all/files/preview-images/November/Screen
+				Shot 2012-11-25 at 10.42.48 AM_0.png</dz:thumbnail>
+			<dz:submitter>
+				<dz:username>megachucky</dz:username>
+				<dz:userimage>http://java.dzone.com/sites/all/files/avatars/picture-758579.jpg</dz:userimage>
+			</dz:submitter>
+			<pubDate>Mon, 26 Nov 2012 06:11:44 +0000</pubDate>
+			<dc:creator>megachucky</dc:creator>
+			<guid isPermaLink="false">123189 at http://java.dzone.com</guid>
+			<feedburner:origLink>http://java.dzone.com/articles/enterprise-ready-tool-support</feedburner:origLink>
+		</item>
+		<item>
+			<title>Devoxx 2012 Report: The State of the Expansion</title>
+			<link>http://feeds.dzone.com/~r/javalobby/frontpage/~3/QO4Rf8ba8rc/devoxx-2012-report-state</link>
+			<description>Devoxx 2012: Bam!
+
+
+				Stephen Chin rode into the Wednesday morning Keynote with his
+				NightHacking.com motorbike. It was an exciting start to the
+				conference days!
+				Preview Text:&amp;nbsp;
+
+
+				The biggest news from my point of view is that they gone and announced
+				Devoxx UK.
+
+
+				Legacy
+				Sponsored:&amp;nbsp;
+
+
+				...&lt;img
+				src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/QO4Rf8ba8rc"
+				height="1" width="1"/&gt;</description>
+			<comments>http://java.dzone.com/articles/devoxx-2012-report-state#comments</comments>
+			<category domain="http://java.dzone.com/category/tags/devoxx">devoxx</category>
+			<category domain="http://java.dzone.com/category/dzone-taxonomy/java">Java</category>
+			<category domain="http://java.dzone.com/category/content-form/opinion">Opinion</category>
+			<category
+				domain="http://java.dzone.com/category/dzone-taxonomy/industry/events">Events</category>
+			<wfw:commentRss xmlns:wfw="http://wellformedweb.org/CommentAPI/">http://java.dzone.com/crss/node/122993</wfw:commentRss>
+			<dz:submitDate>Mon, 26 Nov 2012 01:08:36 -0500</dz:submitDate>
+			<dz:readCount>455</dz:readCount>
+			<dz:commentCount>0</dz:commentCount>
+			<dz:thumbnail>http://cdn.dzone.com/sites/all/files/preview-images/November/devoxx_4.png</dz:thumbnail>
+			<dz:submitter>
+				<dz:username>peter.pilgrim</dz:username>
+				<dz:userimage>http://java.dzone.com/sites/all/files/avatars/picture-162750.jpg</dz:userimage>
+			</dz:submitter>
+			<pubDate>Mon, 26 Nov 2012 06:08:36 +0000</pubDate>
+			<dc:creator>peter.pilgrim</dc:creator>
+			<guid isPermaLink="false">122993 at http://java.dzone.com</guid>
+			<feedburner:origLink>http://java.dzone.com/articles/devoxx-2012-report-state</feedburner:origLink>
+		</item>
+		<item>
+			<title>Learning: Switching Between Theory and Practice</title>
+			<link>http://feeds.dzone.com/~r/javalobby/frontpage/~3/zThSNfjH40w/learning-switching-between</link>
+			<description>&amp;nbsp;In one of my first ever blog posts I wrote
+				about the differences I’d experienced in learning the theory about a
+				topic and then seeing it in practice.
+
+				The way I remember learning at school and university was that you
+				learn all the theory first and then put it into practice but I typically
+				don’t find myself doing this whenever I learn something new.
+				Preview Text:&amp;nbsp;
+
+				...&lt;img
+				src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/zThSNfjH40w"
+				height="1" width="1"/&gt;</description>
+			<comments>http://java.dzone.com/articles/learning-switching-between#comments</comments>
+			<category
+				domain="http://java.dzone.com/category/content-form/tips-and-tricks">Tips and Tricks</category>
+			<category
+				domain="http://java.dzone.com/category/dzone-taxonomy/tools-methods">Tools &amp; Methods</category>
+			<wfw:commentRss xmlns:wfw="http://wellformedweb.org/CommentAPI/">http://java.dzone.com/crss/node/122991</wfw:commentRss>
+			<dz:submitDate>Mon, 26 Nov 2012 01:06:09 -0500</dz:submitDate>
+			<dz:readCount>480</dz:readCount>
+			<dz:commentCount>0</dz:commentCount>
+			<dz:thumbnail>http://cdn.dzone.com/sites/all/files/preview-images/November/documentation-2_1.jpg</dz:thumbnail>
+			<dz:submitter>
+				<dz:username>markhneedham</dz:username>
+				<dz:userimage>http://java.dzone.com/sites/all/files/avatars/picture-387289.jpg</dz:userimage>
+			</dz:submitter>
+			<pubDate>Mon, 26 Nov 2012 06:06:09 +0000</pubDate>
+			<dc:creator>markhneedham</dc:creator>
+			<guid isPermaLink="false">122991 at http://java.dzone.com</guid>
+			<feedburner:origLink>http://java.dzone.com/articles/learning-switching-between</feedburner:origLink>
+		</item>
+		<item>
+			<title>Interviewing with Google? Read this!</title>
+			<link>http://feeds.dzone.com/~r/javalobby/frontpage/~3/ElJzkyKD8KI/interviewing-google-read</link>
+			<description>In response to my post, “My team at Google is hiring,” I
+				got a lot more résumés than I expected. This is absolutely great!
+				Many thanks to all the folks interested in working in my team!
+				Preview Text:&amp;nbsp;
+
+
+				While chatting with a few of the potential candidates, I offered some
+				advice on interviewing with Google. This is advice that was passed
+				to me...&lt;img
+				src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/ElJzkyKD8KI"
+				height="1" width="1"/&gt;</description>
+			<comments>http://java.dzone.com/articles/interviewing-google-read#comments</comments>
+			<category domain="http://java.dzone.com/category/tags/interviews">interviews</category>
+			<category domain="http://java.dzone.com/category/dzone-taxonomy/java">Java</category>
+			<category
+				domain="http://java.dzone.com/category/content-form/tips-and-tricks">Tips and Tricks</category>
+			<category
+				domain="http://java.dzone.com/category/dzone-taxonomy/industry/careers">Careers</category>
+			<wfw:commentRss xmlns:wfw="http://wellformedweb.org/CommentAPI/">http://java.dzone.com/crss/node/122989</wfw:commentRss>
+			<dz:submitDate>Mon, 26 Nov 2012 01:03:08 -0500</dz:submitDate>
+			<dz:readCount>959</dz:readCount>
+			<dz:commentCount>0</dz:commentCount>
+			<dz:thumbnail>http://cdn.dzone.com/sites/all/files/preview-images/November/Google-account-logo_0.png</dz:thumbnail>
+			<dz:submitter>
+				<dz:username>alruiz15</dz:username>
+				<dz:userimage>http://java.dzone.com/sites/all/files/avatars/picture-134694.jpg</dz:userimage>
+			</dz:submitter>
+			<pubDate>Mon, 26 Nov 2012 06:03:08 +0000</pubDate>
+			<dc:creator>alruiz15</dc:creator>
+			<guid isPermaLink="false">122989 at http://java.dzone.com</guid>
+			<feedburner:origLink>http://java.dzone.com/articles/interviewing-google-read</feedburner:origLink>
+		</item>
+		<item>
+			<title>Long-Running Branches Considered Harmful</title>
+			<link>http://feeds.dzone.com/~r/javalobby/frontpage/~3/CL_uTtwNcwg/long-running-branches</link>
+			<description>Originally posted by Jade Rubick
+				Preview Text:&amp;nbsp;
+
+
+				Long-Lived Branches Lead to Larger Chunks of Work. Is That a Good Thing? In
+				this article Jade Rubick makes an argument against long-lived
+				feature branches.
+
+
+				Legacy
+				Sponsored:&amp;nbsp;
+
+
+				unsponsored&lt;img
+				src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/CL_uTtwNcwg"
+				height="1" width="1"/&gt;</description>
+			<comments>http://java.dzone.com/articles/long-running-branches#comments</comments>
+			<category
+				domain="http://java.dzone.com/category/dzone-taxonomy/java/performance">Performance</category>
+			<category
+				domain="http://java.dzone.com/category/dzone-taxonomy/architecture">Architecture</category>
+			<wfw:commentRss xmlns:wfw="http://wellformedweb.org/CommentAPI/">http://java.dzone.com/crss/node/123049</wfw:commentRss>
+			<dz:submitDate>Mon, 26 Nov 2012 00:50:52 -0500</dz:submitDate>
+			<dz:readCount>728</dz:readCount>
+			<dz:commentCount>0</dz:commentCount>
+			<dz:thumbnail>http://cdn.dzone.com/sites/all/files/preview-images/November/branc_0.png</dz:thumbnail>
+			<dz:submitter>
+				<dz:username>leighshevchik</dz:username>
+				<dz:userimage>http://java.dzone.com/sites/all/files/avatars/picture-1036697.jpg</dz:userimage>
+			</dz:submitter>
+			<pubDate>Mon, 26 Nov 2012 05:50:52 +0000</pubDate>
+			<dc:creator>leighshevchik</dc:creator>
+			<guid isPermaLink="false">123049 at http://java.dzone.com</guid>
+			<feedburner:origLink>http://java.dzone.com/articles/long-running-branches</feedburner:origLink>
+		</item>
+		<item>
+			<title>Fun with Couchbase and Markov Chains</title>
+			<link>http://feeds.dzone.com/~r/javalobby/frontpage/~3/FSIgDfY4cSU/fun-couchbase-and-markov</link>
+			<description>I’ve been hearing about&lt;img
+				src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/FSIgDfY4cSU"
+				height="1" width="1"/&gt;</description>
+			<comments>http://architects.dzone.com/articles/fun-couchbase-and-markov#comments</comments>
+			<category domain="http://java.dzone.com/category/tags/couchbase">Couchbase</category>
+			<category domain="http://java.dzone.com/category/tags/markov">markov</category>
+			<category
+				domain="http://java.dzone.com/category/content-form/tips-and-tricks">Tips and Tricks</category>
+			<category
+				domain="http://java.dzone.com/category/dzone-taxonomy/architecture/nosql">NoSQL</category>
+			<wfw:commentRss xmlns:wfw="http://wellformedweb.org/CommentAPI/">http://java.dzone.com/crss/node/123069</wfw:commentRss>
+			<dz:submitDate>Mon, 26 Nov 2012 00:50:00 -0500</dz:submitDate>
+			<dz:readCount>413</dz:readCount>
+			<dz:commentCount>0</dz:commentCount>
+			<dz:thumbnail>http://cdn.dzone.com/sites/all/files/preview-images/November/Screen
+				Shot 2012-11-20 at 1.39.50 PM_0.png</dz:thumbnail>
+			<dz:submitter>
+				<dz:username>tbdenney</dz:username>
+				<dz:userimage>http://java.dzone.com/sites/all/files/avatars/picture-1071679.jpg</dz:userimage>
+			</dz:submitter>
+			<pubDate>Mon, 26 Nov 2012 05:50:00 +0000</pubDate>
+			<dc:creator>tbdenney</dc:creator>
+			<guid isPermaLink="false">123069 at http://java.dzone.com</guid>
+			<feedburner:origLink>http://architects.dzone.com/articles/fun-couchbase-and-markov</feedburner:origLink>
+		</item>
+		<item>
+			<title>CentOS Minimal Installation Network Configuration</title>
+			<link>http://feeds.dzone.com/~r/javalobby/frontpage/~3/orpFvCTszo4/centos-minimal-installation</link>
+			<description>By default CentOS minimal install does not come with
+				pre-configured network, here’s how to make it work:
+
+
+				$ ping google.com
+				ping: unknown host google.com
+
+				To fix this we’ll need to edit the set up for the ethernet. Let’s
+				start with editing this file:
+				Preview Text:&amp;nbsp;
+
+
+				By default CentOS minimal install does not come with pre-configured
+				network,...&lt;img
+				src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/orpFvCTszo4"
+				height="1" width="1"/&gt;</description>
+			<comments>http://architects.dzone.com/articles/centos-minimal-installation#comments</comments>
+			<category domain="http://java.dzone.com/category/tags/centos">CentOS</category>
+			<category domain="http://java.dzone.com/category/tags/linux">Linux</category>
+			<category
+				domain="http://java.dzone.com/category/content-form/tips-and-tricks">Tips and Tricks</category>
+			<category
+				domain="http://java.dzone.com/category/dzone-taxonomy/infrastructure/networking">Networking</category>
+			<wfw:commentRss xmlns:wfw="http://wellformedweb.org/CommentAPI/">http://java.dzone.com/crss/node/122815</wfw:commentRss>
+			<dz:submitDate>Mon, 26 Nov 2012 00:50:00 -0500</dz:submitDate>
+			<dz:readCount>494</dz:readCount>
+			<dz:commentCount>0</dz:commentCount>
+			<dz:thumbnail>http://cdn.dzone.com/sites/all/files/preview-images/November/centos-logo.png</dz:thumbnail>
+			<dz:submitter>
+				<dz:username>kgogolek</dz:username>
+				<dz:userimage>http://java.dzone.com/sites/all/files/avatars/picture-1071245.jpg</dz:userimage>
+			</dz:submitter>
+			<pubDate>Mon, 26 Nov 2012 05:50:00 +0000</pubDate>
+			<dc:creator>kgogolek</dc:creator>
+			<guid isPermaLink="false">122815 at http://java.dzone.com</guid>
+			<feedburner:origLink>http://architects.dzone.com/articles/centos-minimal-installation</feedburner:origLink>
+		</item>
+		<item>
+			<title>Data-Driven Animation with Edge Animate</title>
+			<link>http://feeds.dzone.com/~r/javalobby/frontpage/~3/x0v6lpvuR2k/data-driven-edge-animate</link>
+			<description>This week I demonstrated&amp;nbsp;Edge
+				Animate&amp;nbsp;to two cities in Texas as part of the Create the
+				Web tour. Animations are not something I typically spend a lot of
+				time thinking about, but I was grateful for an opportunity to show
+				off what I think is a pretty cool program. At my first presentation,
+				an attendee asked if Edge Animate supported data-driven animations.
+				Hear is what I told him, and a...&lt;img
+				src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/x0v6lpvuR2k"
+				height="1" width="1"/&gt;</description>
+			<comments>http://architects.dzone.com/articles/data-driven-edge-animate#comments</comments>
+			<category
+				domain="http://java.dzone.com/category/dzone-taxonomy/tools-methods/big-data">Big Data</category>
+			<category domain="http://java.dzone.com/category/content-form/tutorials">Tutorial</category>
+			<category
+				domain="http://java.dzone.com/category/dzone-taxonomy/tools-methods">Tools &amp; Methods</category>
+			<wfw:commentRss xmlns:wfw="http://wellformedweb.org/CommentAPI/">http://java.dzone.com/crss/node/122707</wfw:commentRss>
+			<dz:submitDate>Mon, 26 Nov 2012 00:48:55 -0500</dz:submitDate>
+			<dz:readCount>422</dz:readCount>
+			<dz:commentCount>0</dz:commentCount>
+			<dz:thumbnail>http://cdn.dzone.com/sites/all/files/preview-images/November/031009_WDA_AL_SteamboatWillie_feat.jpeg</dz:thumbnail>
+			<dz:submitter>
+				<dz:username>cfjedimaster</dz:username>
+				<dz:userimage>http://java.dzone.com/sites/all/files/avatars/picture-201258.jpg</dz:userimage>
+			</dz:submitter>
+			<pubDate>Mon, 26 Nov 2012 05:48:55 +0000</pubDate>
+			<dc:creator>cfjedimaster</dc:creator>
+			<guid isPermaLink="false">122707 at http://java.dzone.com</guid>
+			<feedburner:origLink>http://architects.dzone.com/articles/data-driven-edge-animate</feedburner:origLink>
+		</item>
+		<item>
+			<title>Is Dropbox a Feature or a Product?</title>
+			<link>http://feeds.dzone.com/~r/javalobby/frontpage/~3/3EwAP1A2BHE/dropbox-feature-or-product</link>
+			<description>&amp;nbsp;
+				Preview Text:&amp;nbsp;
+
+
+				The late Steve Jobs once described Dropbox as ‘a feature, not a
+				product.’ From Apple’s perspective, that&amp;#039;s true: cloud
+				storage is just a feature. But does this miss a crucial point?
+
+
+				Legacy
+				Sponsored:&amp;nbsp;
+
+
+				unsponsored&lt;img
+				src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/3EwAP1A2BHE"
+				height="1" width="1"/&gt;</description>
+			<comments>http://architects.dzone.com/articles/dropbox-feature-or-product#comments</comments>
+			<category
+				domain="http://java.dzone.com/category/dzone-taxonomy/infrastructure/cloud">Cloud</category>
+			<category domain="http://java.dzone.com/category/tags/dropbox">dropbox</category>
+			<category domain="http://java.dzone.com/category/tags/evernote">Evernote</category>
+			<category domain="http://java.dzone.com/category/content-form/theory">Theory</category>
+			<category
+				domain="http://java.dzone.com/category/dzone-taxonomy/infrastructure">Infrastructure</category>
+			<wfw:commentRss xmlns:wfw="http://wellformedweb.org/CommentAPI/">http://java.dzone.com/crss/node/123237</wfw:commentRss>
+			<dz:submitDate>Mon, 26 Nov 2012 00:48:26 -0500</dz:submitDate>
+			<dz:readCount>561</dz:readCount>
+			<dz:commentCount>0</dz:commentCount>
+			<dz:thumbnail>http://cdn.dzone.com/sites/all/files/preview-images/November/Dropbox-logo_0.jpg</dz:thumbnail>
+			<dz:submitter>
+				<dz:username>cloudofdata</dz:username>
+				<dz:userimage>http://java.dzone.com/sites/all/files/avatars/picture-1041037.jpg</dz:userimage>
+			</dz:submitter>
+			<pubDate>Mon, 26 Nov 2012 05:48:26 +0000</pubDate>
+			<dc:creator>cloudofdata</dc:creator>
+			<guid isPermaLink="false">123237 at http://java.dzone.com</guid>
+			<feedburner:origLink>http://architects.dzone.com/articles/dropbox-feature-or-product</feedburner:origLink>
+		</item>
+		<item>
+			<title>Fluentd + Hadoop: Instant Big Data Collection</title>
+			<link>http://feeds.dzone.com/~r/javalobby/frontpage/~3/0oGsKfRojWI/fluentd-hadoop-instant-big</link>
+			<description>Fluentd&amp;nbsp;is a JSON-based, open-source log
+				collector originally written at&amp;nbsp;Treasure Data.
+				Preview Text:&amp;nbsp;
+
+
+				This post describes how to use Fluentd’s newly released WebHDFS plugin
+				to aggregate semi-structured logs into Hadoop HDFS.
+
+
+				Legacy
+				Sponsored:&amp;nbsp;
+
+
+				unsponsored
+				...&lt;img
+				src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/0oGsKfRojWI"
+				height="1" width="1"/&gt;</description>
+			<comments>http://architects.dzone.com/articles/fluentd-hadoop-instant-big#comments</comments>
+			<category
+				domain="http://java.dzone.com/category/dzone-taxonomy/tools-methods/big-data">Big Data</category>
+			<category domain="http://java.dzone.com/category/tags/fluentd">fluentd</category>
+			<category domain="http://java.dzone.com/category/tags/hadoop">Hadoop</category>
+			<category domain="http://java.dzone.com/category/content-form/tutorials">Tutorial</category>
+			<category
+				domain="http://java.dzone.com/category/dzone-taxonomy/tools-methods">Tools &amp; Methods</category>
+			<wfw:commentRss xmlns:wfw="http://wellformedweb.org/CommentAPI/">http://java.dzone.com/crss/node/122709</wfw:commentRss>
+			<dz:submitDate>Mon, 26 Nov 2012 00:47:55 -0500</dz:submitDate>
+			<dz:readCount>452</dz:readCount>
+			<dz:commentCount>0</dz:commentCount>
+			<dz:thumbnail>http://cdn.dzone.com/sites/all/files/preview-images/November/hadoop_0.png</dz:thumbnail>
+			<dz:submitter>
+				<dz:username>treasure-data</dz:username>
+				<dz:userimage>http://java.dzone.com/sites/all/files/avatars/picture-1028325.jpg</dz:userimage>
+			</dz:submitter>
+			<pubDate>Mon, 26 Nov 2012 05:47:55 +0000</pubDate>
+			<dc:creator>treasure-data</dc:creator>
+			<guid isPermaLink="false">122709 at http://java.dzone.com</guid>
+			<feedburner:origLink>http://architects.dzone.com/articles/fluentd-hadoop-instant-big</feedburner:origLink>
+		</item>
+		<item>
+			<title>IBM AIX: Java process Size Monitoring</title>
+			<link>http://feeds.dzone.com/~r/javalobby/frontpage/~3/dCB04Whmork/ibm-aix-java-process-size-0</link>
+			<description>This
+				article will provide you with a quick reference guide on how to calculate
+				the
+				Java process size memory footprint for Java VM processes running on IBM
+				AIX
+				5.3+ OS.
+				Preview Text:&amp;nbsp;
+
+
+				This article will provide you with a quick reference guide on how to
+				calculate the Java process size memory footprint for Java VM
+				processes running on IBM AIX 5.3+ OS....&lt;img
+				src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/dCB04Whmork"
+				height="1" width="1"/&gt;</description>
+			<comments>http://java.dzone.com/articles/ibm-aix-java-process-size-0#comments</comments>
+			<category domain="http://java.dzone.com/category/tags/aix">AIX</category>
+			<category domain="http://java.dzone.com/category/dzone-taxonomy/java">Java</category>
+			<category
+				domain="http://java.dzone.com/category/content-form/tips-and-tricks">Tips and Tricks</category>
+			<category
+				domain="http://java.dzone.com/category/dzone-taxonomy/architecture/performance">Performance</category>
+			<category
+				domain="http://java.dzone.com/category/dzone-taxonomy/infrastructure">Infrastructure</category>
+			<wfw:commentRss xmlns:wfw="http://wellformedweb.org/CommentAPI/">http://java.dzone.com/crss/node/123063</wfw:commentRss>
+			<dz:submitDate>Mon, 26 Nov 2012 00:46:52 -0500</dz:submitDate>
+			<dz:readCount>364</dz:readCount>
+			<dz:commentCount>0</dz:commentCount>
+			<dz:thumbnail>http://cdn.dzone.com/sites/all/files/preview-images/November/ix_0.png</dz:thumbnail>
+			<dz:submitter>
+				<dz:username>phcharbonneau</dz:username>
+				<dz:userimage>http://java.dzone.com/sites/all/files/avatars/picture-1001553.jpg</dz:userimage>
+			</dz:submitter>
+			<pubDate>Mon, 26 Nov 2012 05:46:52 +0000</pubDate>
+			<dc:creator>phcharbonneau</dc:creator>
+			<guid isPermaLink="false">123063 at http://java.dzone.com</guid>
+			<feedburner:origLink>http://java.dzone.com/articles/ibm-aix-java-process-size-0</feedburner:origLink>
+		</item>
+		<item>
+			<title>The Cloudcast, Ep. 64.5: The Cloudcast Charity Challenge</title>
+			<link>http://feeds.dzone.com/~r/javalobby/frontpage/~3/Izu9wRIHJnI/cloudcast-ep-645-cloudcast</link>
+			<description>Download the MP3
+				Date: November 21, 2012
+				By: Aaron Delp and Brian Gracely
+				Preview Text:&amp;nbsp;
+
+
+				Aaron and Brian discuss The Cloudcast (.net) Charity Challenge. The guys
+				ask the listeners to make a small donation to a great cause (helping
+				sick kids) and pledge to match each donation.
+
+
+				Legacy
+				Sponsored:&amp;nbsp;
+
+
+				...&lt;img
+				src="http://feeds.feedburner.com/~r/javalobby/frontpage/~4/Izu9wRIHJnI"
+				height="1" width="1"/&gt;</description>
+			<comments>http://cloud.dzone.com/articles/cloudcast-ep-645-cloudcast#comments</comments>
+			<category
+				domain="http://java.dzone.com/category/dzone-taxonomy/infrastructure/cloud">Cloud</category>
+			<category domain="http://java.dzone.com/category/tags/cloudcast">cloudcast</category>
+			<category domain="http://java.dzone.com/category/content-form/news">News</category>
+			<category
+				domain="http://java.dzone.com/category/dzone-taxonomy/infrastructure">Infrastructure</category>
+			<wfw:commentRss xmlns:wfw="http://wellformedweb.org/CommentAPI/">http://java.dzone.com/crss/node/123235</wfw:commentRss>
+			<dz:submitDate>Mon, 26 Nov 2012 00:44:26 -0500</dz:submitDate>
+			<dz:readCount>353</dz:readCount>
+			<dz:commentCount>0</dz:commentCount>
+			<dz:thumbnail>http://cdn.dzone.com/sites/all/files/preview-images/November/Screen
+				Shot 2012-11-25 at 7.52.34 PM_0.png</dz:thumbnail>
+			<dz:submitter>
+				<dz:username>bgracely</dz:username>
+				<dz:userimage>http://java.dzone.com/sites/all/files/avatars/picture-884743.png</dz:userimage>
+			</dz:submitter>
+			<pubDate>Mon, 26 Nov 2012 05:44:26 +0000</pubDate>
+			<dc:creator>bgracely</dc:creator>
+			<guid isPermaLink="false">123235 at http://java.dzone.com</guid>
+			<feedburner:origLink>http://cloud.dzone.com/articles/cloudcast-ep-645-cloudcast</feedburner:origLink>
+		</item>
+	</channel>
+</rss>

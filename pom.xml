@@ -11,6 +11,7 @@
 	<modules>
 		<module>application</module>
 		<module>arq-tomee-embedded</module>
+		<module>arq-tomee-remote</module>
 	</modules>
 
 	<build>

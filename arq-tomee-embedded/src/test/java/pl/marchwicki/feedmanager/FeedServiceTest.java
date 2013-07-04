@@ -16,7 +16,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import pl.marchwicki.feedmanager.model.FeedBuilder;
-import pl.marchwicki.feedmanager.rs.RestFeedConsumerTest;
 
 public class FeedServiceTest {
 
@@ -44,7 +43,7 @@ public class FeedServiceTest {
 	
 	@BeforeClass
 	public static void readXmlContent() throws Exception {
-		URL dir_url = RestFeedConsumerTest.class.getResource("/");
+		URL dir_url = FeedServiceTest.class.getResource("/");
 		File dir = new File(dir_url.toURI());
 		File xml = new File(dir, "feed.xml");
 		

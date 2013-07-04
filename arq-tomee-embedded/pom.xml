@@ -9,6 +9,7 @@
 	<parent>
 		<groupId>pl.marchwicki</groupId>
 		<artifactId>feedmanager</artifactId>
+		<version>1.0-SNAPSHOT</version>
 	</parent>
 
 	<properties>
@@ -29,8 +30,9 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>${pom.groupId}</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>application</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 
 		<!-- tests -->
@@ -73,7 +75,7 @@
 			<artifactId>shrinkwrap-descriptors-impl-javaee</artifactId>
 			<scope>test</scope>
 		</dependency>
-		        
+
 		<dependency>
 			<groupId>org.apache.openejb</groupId>
 			<artifactId>arquillian-tomee-embedded</artifactId>
@@ -92,13 +94,6 @@
 			<groupId>org.apache.openejb</groupId>
 			<artifactId>tomee-webservices</artifactId>
 			<version>${tomee.version}</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>4.3.1.Final</version>
 			<scope>test</scope>
 		</dependency>
 

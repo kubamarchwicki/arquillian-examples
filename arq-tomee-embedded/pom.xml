@@ -4,78 +4,19 @@
 	<groupId>pl.marchwicki.feedmanager</groupId>
 	<artifactId>arq-tomee-embedded</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
 
 	<parent>
-		<groupId>pl.marchwicki</groupId>
-		<artifactId>feedmanager</artifactId>
+		<groupId>pl.marchwicki.feedmanager</groupId>
+		<artifactId>arq-parent</artifactId>
 		<version>1.0-SNAPSHOT</version>
+		<relativePath>../arq-parent/pom.xml</relativePath>
 	</parent>
 
 	<properties>
 		<tomee.version>1.5.2</tomee.version>
 	</properties>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.jboss.arquillian</groupId>
-				<artifactId>arquillian-bom</artifactId>
-				<version>1.0.0.Final</version>
-				<scope>import</scope>
-				<type>pom</type>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
 	<dependencies>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>application</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
-		<!-- tests -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>1.9.5</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.jayway.awaitility</groupId>
-			<artifactId>awaitility</artifactId>
-			<version>1.3.4</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.2.1</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.arquillian.junit</groupId>
-			<artifactId>arquillian-junit-container</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.arquillian.container</groupId>
-			<artifactId>arquillian-container-spi</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.shrinkwrap.descriptors</groupId>
-			<artifactId>shrinkwrap-descriptors-impl-javaee</artifactId>
-			<scope>test</scope>
-		</dependency>
-
 		<dependency>
 			<groupId>org.apache.openejb</groupId>
 			<artifactId>arquillian-tomee-embedded</artifactId>

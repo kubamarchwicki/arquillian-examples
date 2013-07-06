@@ -1,0 +1,163 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>pl.marchwicki.feedmanager</groupId>
+	<artifactId>arq-jboss6</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<parent>
+		<groupId>pl.marchwicki.feedmanager</groupId>
+		<artifactId>arq-parent</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath>../arq-parent/pom.xml</relativePath>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>application-jboss6</artifactId>
+			<version>${project.version}</version>
+			<classifier>classes</classifier>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-nop</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+
+		<!-- various -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.3.1.Final</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- jboss AS -->
+		<dependency>
+			<groupId>org.jboss.jbossas</groupId>
+			<artifactId>jboss-as-client</artifactId>
+			<version>6.0.0.Final</version>
+			<type>pom</type>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>com.sun.istack</groupId>
+					<artifactId>istack-commons-runtime</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>woodstox</groupId>
+					<artifactId>wstx-asl</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>ws-commons</groupId>
+					<artifactId>policy</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.ws</groupId>
+			<artifactId>jbossws-spi</artifactId>
+			<version>1.4.1.GA</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ws.commons.neethi</groupId>
+			<artifactId>neethi</artifactId>
+			<version>1.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>2.2.7</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+		<!-- JEE6 jboss style -->
+		<dependency>
+			<groupId>org.jboss.spec</groupId>
+			<artifactId>jboss-javaee-6.0</artifactId>
+			<version>3.0.2.Final</version>
+			<type>pom</type>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>java.net</id>
+			<url>http://download.java.net/maven/2</url>
+		</repository>
+		<repository>
+			<id>jboss-public-repository</id>
+			<url>http://repository.jboss.org/nexus/content/groups/public</url>
+		</repository>
+		<repository>
+			<id>jboss-deprecated</id>
+			<url>http://repository.jboss.org/nexus/content/repositories/deprecated</url>
+		</repository>
+	</repositories>
+
+	<profiles>
+		<profile>
+			<id>jboss6-managed</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>org.jboss.arquillian.container</groupId>
+					<artifactId>arquillian-jbossas-managed-6</artifactId>
+					<version>1.0.0.CR3</version>
+				</dependency>
+				<dependency>
+					<groupId>org.jboss.jbossas</groupId>
+					<artifactId>jboss-server-manager</artifactId>
+					<version>1.0.4.Final</version>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<systemPropertyVariables>
+								<arquillian.launch>jboss6-managed</arquillian.launch>
+							</systemPropertyVariables>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>jboss6-remote</id>
+			<dependencies>
+				<dependency>
+					<groupId>org.jboss.arquillian.container</groupId>
+					<artifactId>arquillian-jbossas-remote-6</artifactId>
+					<scope>test</scope>
+					<version>1.0.0.CR3</version>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

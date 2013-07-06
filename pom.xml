@@ -10,6 +10,7 @@
 
 	<modules>
 		<module>application</module>
+		<module>application-glassfish31</module>
 		<module>arq-parent</module>
 	</modules>
 

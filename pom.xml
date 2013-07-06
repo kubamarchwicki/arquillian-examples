@@ -12,7 +12,7 @@
 		<module>application</module>
 <!-- 		<module>application-glassfish31</module> -->
 		<module>application-jboss6</module>
-<!-- 		<module>application-jboss7</module> -->
+		<module>application-jboss7</module>
 		<module>arq-parent</module>
 	</modules>
 

@@ -16,7 +16,7 @@
 	<modules>
 		<module>../arq-tomee-embedded</module>
 		<module>../arq-tomee-remote</module>
-<!-- 		<module>../arq-glassfish31-embedded</module> -->
+		<module>../arq-glassfish31-embedded</module>
 		<module>../arq-jboss6</module>
 		<module>../arq-jboss7</module>
 	</modules>
@@ -33,7 +33,7 @@
 			<dependency>
 				<groupId>org.jboss.arquillian</groupId>
 				<artifactId>arquillian-bom</artifactId>
-				<version>1.0.4.Final</version>
+				<version>1.0.3.Final</version>
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>

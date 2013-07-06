@@ -2,7 +2,6 @@ package pl.marchwicki.feedmanager;
 
 import java.util.Set;
 
-import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
@@ -27,7 +26,7 @@ public class FeedsService {
 	@Inject
 	Event<FeedEventLog> event;
 	
-	@Resource
+	@Inject
 	Validator validator;
 	
 	@Interceptors(FeedBodyLoggingInterceptor.class)

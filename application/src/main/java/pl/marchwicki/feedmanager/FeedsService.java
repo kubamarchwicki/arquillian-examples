@@ -49,4 +49,8 @@ public class FeedsService {
 	public Feed getFeed(String feedname) {
 		return repository.getFeed(feedname);
 	}
+
+	public Feed[] getAll() {
+		return repository.getAllFeeds().toArray(new Feed[repository.getAllFeeds().size()]);
+	}
 }

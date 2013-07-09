@@ -21,6 +21,13 @@ public class RestFeedConsumerEndpoint {
 	@Inject
 	FeedsService service;
 
+	@Path("/feeds")
+	@GET
+	@Produces(value = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	public Feed[] returnAllFeeds() {
+		return service.getAll();
+	}
+	
 	@Path("/feed/{feedname}")
 	@POST
 	public Response consume(@PathParam("feedname") String feedname,

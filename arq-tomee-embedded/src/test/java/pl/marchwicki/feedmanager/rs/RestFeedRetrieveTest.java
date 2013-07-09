@@ -8,6 +8,7 @@ import java.net.URL;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
@@ -25,8 +26,6 @@ import pl.marchwicki.feedmanager.model.FeedBuilder;
 @RunWith(Arquillian.class)
 public class RestFeedRetrieveTest {
 
-	private final String FEED_NAME = "javalobby";
-	
 	@Deployment
 	public static WebArchive createDeployment() throws Exception {
 		return ShrinkWrap
@@ -39,16 +38,18 @@ public class RestFeedRetrieveTest {
 	}
 
 	@Test
-	public void shouldReturnNotFoundForNoFeedsTest(@ArquillianResource URL baseURL) throws Exception {
+	public void shouldReturnEmptyFeedList(@ArquillianResource URL baseURL) throws Exception {
 		//given
 		DefaultHttpClient httpclient = new DefaultHttpClient();
-		HttpGet get = new HttpGet(baseURL.toURI() + "rs/feed/"+FEED_NAME);
+		HttpGet get = new HttpGet(baseURL.toURI() + "rs/feeds");
 		
 		//when
 		HttpResponse response = httpclient.execute(get);
 		
 		//then
-		assertThat(response.getStatusLine().getStatusCode(), equalTo(404));
+		assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+		assertThat(EntityUtils.toString(response.getEntity()), equalTo("{\"feed\":[]}"));
 	}
+
 	
 }

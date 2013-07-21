@@ -1,0 +1,17 @@
+feeds:
+  - feedId: 1
+    title: javalobby
+    feedname: javalobby
+    link: http://java.dzone.com
+    
+items:
+  - itemId: 1
+    title: first entry
+    feedId: 1
+    content: first content
+    link: http://java.dzone.com/link/1
+  - itemId: 2
+    title: second entry
+    feedId: 1
+    content: second content
+    link: http://java.dzone.com/link/2

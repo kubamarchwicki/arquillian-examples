@@ -5,9 +5,6 @@ import static org.junit.Assert.*;
 
 import java.net.URL;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.hibernate.ejb.HibernatePersistence;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -25,6 +22,8 @@ import org.junit.runner.RunWith;
 import pl.marchwicki.feedmanager.DatabaseFeedsRepository;
 import pl.marchwicki.feedmanager.FeedsService;
 import pl.marchwicki.feedmanager.model.FeedBuilder;
+
+import com.github.kevinsawicki.http.HttpRequest;
 
 @RunWith(Arquillian.class)
 public class RestFeedRetrieveDatabaseTest {
@@ -63,15 +62,11 @@ public class RestFeedRetrieveDatabaseTest {
 	@Test
 	@Ignore
 	public void shouldReturnNotFoundForNoFeedsTest(@ArquillianResource URL baseURL) throws Exception {
-		//given
-		DefaultHttpClient httpclient = new DefaultHttpClient();
-		HttpGet get = new HttpGet(baseURL.toURI() + "rs/feed/"+FEED_NAME);
-		
 		//when
-		HttpResponse response = httpclient.execute(get);
+		int statusCode = HttpRequest.get(baseURL.toURI() + "rs/feed/"+FEED_NAME).code();
 		
 		//then
-		assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+		assertThat(statusCode, equalTo(200));
 	}
 	
 }

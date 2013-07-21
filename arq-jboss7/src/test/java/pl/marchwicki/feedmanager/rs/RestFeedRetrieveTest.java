@@ -4,12 +4,9 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 import java.io.File;
+import java.io.StringWriter;
 import java.net.URL;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
@@ -34,13 +31,15 @@ import pl.marchwicki.feedmanager.model.Feed;
 import pl.marchwicki.feedmanager.model.FeedBuilder;
 import pl.marchwicki.feedmanager.model.Item;
 
+import com.github.kevinsawicki.http.HttpRequest;
+
 @RunWith(Arquillian.class)
 public class RestFeedRetrieveTest {
 
 	@Deployment(testable = false)
 	public static WebArchive createDeployment() throws Exception {
 		File[] libs = Maven.resolver().loadPomFromFile("pom.xml")
-				.resolve("rome:rome:0.9").withTransitivity()
+				.resolve("com.github.kevinsawicki:http-request:5.4", "rome:rome:0.9").withTransitivity()
 				.asFile();
 
 		WebAppDescriptor web = Descriptors.create(WebAppDescriptor.class)
@@ -67,16 +66,16 @@ public class RestFeedRetrieveTest {
 	@Test
 	@RunAsClient
 	public void shouldReturnEmptyFeedList(@ArquillianResource URL baseURL) throws Exception {
-		//given
-		DefaultHttpClient httpclient = new DefaultHttpClient();
-		HttpGet get = new HttpGet(baseURL.toURI() + "rs/feeds");
+		//given 
+		final StringWriter output = new StringWriter();
 		
 		//when
-		HttpResponse response = httpclient.execute(get);
+		HttpRequest request = HttpRequest.get(baseURL.toURI() + "rs/feeds")
+				.receive(output);
 		
 		//then
-		assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
-		assertThat(EntityUtils.toString(response.getEntity()), equalTo("[]"));
+		assertThat(request.code(), equalTo(200));
+		assertThat(output.toString(), equalTo("[]"));
 	}
 	
 }

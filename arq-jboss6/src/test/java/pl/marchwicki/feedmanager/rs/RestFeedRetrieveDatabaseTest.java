@@ -1,17 +1,22 @@
 package pl.marchwicki.feedmanager.rs;
 
+import static com.jayway.jsonassert.JsonAssert.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 import java.io.File;
+import java.io.StringWriter;
 import java.net.URL;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import javax.inject.Inject;
+
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.junit.InSequence;
+import org.jboss.arquillian.persistence.Cleanup;
+import org.jboss.arquillian.persistence.TestExecutionPhase;
+import org.jboss.arquillian.persistence.UsingDataSet;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
@@ -31,15 +36,21 @@ import pl.marchwicki.feedmanager.model.Item;
 import pl.marchwicki.feedmanager.model.entities.FeedEntity;
 import pl.marchwicki.feedmanager.model.entities.ItemEntity;
 
+import com.github.kevinsawicki.http.HttpRequest;
+
 @RunWith(Arquillian.class)
+@Ignore("jboss6 json marshalling error")
 public class RestFeedRetrieveDatabaseTest {
 
 	private final String FEED_NAME = "javalobby";
 
+	@Inject
+	FeedsRepository repository;
+	
 	@Deployment
 	public static WebArchive createDeployment() throws Exception {
 		String[] deps = { "com.google.collections:google-collections:1.0",
-				"org.apache.httpcomponents:httpclient",
+				"com.github.kevinsawicki:http-request:5.4",
 				"rome:rome:0.9"};
 
 		File[] libs = Maven.resolver().loadPomFromFile("pom.xml").resolve(deps)
@@ -58,21 +69,36 @@ public class RestFeedRetrieveDatabaseTest {
 				.addAsResource("test-beans.xml", "META-INF/beans.xml");
 	}
 
-	// TODO: arquillian database extension
 	@Test
+	@InSequence(1)
+	@UsingDataSet("datasets/feeds.yml")
+	@Cleanup(phase=TestExecutionPhase.NONE)
+	public void findFeedById() {
+		Feed feed = repository.getFeed(FEED_NAME);
+		
+		assertThat(feed, is(notNullValue()));
+		assertThat(feed.getLink(), equalTo("http://java.dzone.com"));
+	}
+	
+	
+	@Test
+	@InSequence(2)
 	@RunAsClient
-	@Ignore
-	public void shouldReturnNotFoundForNoFeedsTest(
-			@ArquillianResource URL baseURL) throws Exception {
-		// given
-		DefaultHttpClient httpclient = new DefaultHttpClient();
-		HttpGet get = new HttpGet(baseURL.toURI() + "rs/feed/" + FEED_NAME);
+	public void shouldReturnValidFeedTest(@ArquillianResource URL baseURL) throws Exception {
+		//given
+		final StringWriter output = new StringWriter();
+		
+		//when
+		HttpRequest request = HttpRequest.get(baseURL.toURI() + "rs/feed/"+FEED_NAME)
+			.receive(output);
 
-		// when
-		HttpResponse response = httpclient.execute(get);
-
-		// then
-		assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+		//then
+		assertThat(request.code(), equalTo(200));
+		with(output.toString()).assertThat("$.feedname", equalTo("javalobby"))
+			.assertThat("$.items[0].content", equalTo("first content"))
+			.assertThat("$.items[0].link", equalTo("http://java.dzone.com/link/1"))
+			.assertThat("$.items[1].content", equalTo("second content"))
+			.assertThat("$.items[1].link", equalTo("http://java.dzone.com/link/2"));
 	}
 
 }

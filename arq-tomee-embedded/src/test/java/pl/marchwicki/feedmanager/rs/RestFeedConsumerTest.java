@@ -5,14 +5,9 @@ import static org.junit.Assert.*;
 
 import java.io.File;
 import java.net.URL;
-import java.util.Scanner;
 
 import javax.inject.Inject;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
@@ -20,7 +15,6 @@ import org.jboss.shrinkwrap.api.ArchivePaths;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -28,6 +22,8 @@ import pl.marchwicki.feedmanager.FeedsRepository;
 import pl.marchwicki.feedmanager.FeedsService;
 import pl.marchwicki.feedmanager.InMemoryFeedsRepository;
 import pl.marchwicki.feedmanager.model.FeedBuilder;
+
+import com.github.kevinsawicki.http.HttpRequest;
 
 @RunWith(Arquillian.class)
 public class RestFeedConsumerTest {
@@ -51,28 +47,18 @@ public class RestFeedConsumerTest {
 	@Test
 	public void shouldParseXmlFeedTest(@ArquillianResource URL baseURL) throws Exception {
 		//given
-		DefaultHttpClient httpclient = new DefaultHttpClient();
-		HttpPost post = new HttpPost(baseURL.toURI() + "rs/feed/"+FEED_NAME);
-		post.setEntity(new StringEntity(rssParameterBody));  		
-		
-		//when
-		HttpResponse response = httpclient.execute(post);
-		
-		//then
-		assertThat(response.getStatusLine().getStatusCode(), equalTo(201));
-		assertThat(repository.getAllFeeds().size(), equalTo(1));
-		assertThat(repository.getFeed(FEED_NAME).getItems().size(), equalTo(15));
-	}
-	
-	@BeforeClass
-	public static void readXmlContent() throws Exception {
 		URL dir_url = RestFeedConsumerTest.class.getResource("/");
 		File dir = new File(dir_url.toURI());
 		File xml = new File(dir, "feed.xml");
 		
-		rssParameterBody = new Scanner( xml, "UTF-8" ).useDelimiter("\\A").next(); 
+		//when
+		int statusCode = HttpRequest.post(baseURL.toURI() + "rs/feed/"+FEED_NAME)
+			.send(xml).code();
+		
+		//then
+		assertThat(statusCode, equalTo(201));
+		assertThat(repository.getAllFeeds().size(), equalTo(1));
+		assertThat(repository.getFeed(FEED_NAME).getItems().size(), equalTo(15));
 	}
 	
-
-	private static String rssParameterBody;
 }

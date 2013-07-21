@@ -5,14 +5,9 @@ import static org.junit.Assert.*;
 
 import java.io.File;
 import java.net.URL;
-import java.util.Scanner;
 
 import javax.inject.Inject;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
@@ -35,6 +30,8 @@ import pl.marchwicki.feedmanager.model.Feed;
 import pl.marchwicki.feedmanager.model.FeedBuilder;
 import pl.marchwicki.feedmanager.model.Item;
 
+import com.github.kevinsawicki.http.HttpRequest;
+
 @RunWith(Arquillian.class)
 public class RestFeedConsumerTest {
 
@@ -47,7 +44,7 @@ public class RestFeedConsumerTest {
 	public static WebArchive createDeployment() throws Exception {
 		File[] libs = Maven.resolver().loadPomFromFile("pom.xml")
 				.resolve("org.hibernate:hibernate-entitymanager", 
-						"org.apache.httpcomponents:httpclient", 
+						"com.github.kevinsawicki:http-request:5.4",
 						"rome:rome:0.9")
 				.withTransitivity().asFile();
 
@@ -71,16 +68,13 @@ public class RestFeedConsumerTest {
 		final URL dir_url = RestFeedConsumerTest.class.getResource("/");
 		final File dir = new File(dir_url.toURI());
 		final File xml = new File(dir, "feed.xml");
-		final String rssParameterBody = new Scanner( xml, "UTF-8" ).useDelimiter("\\A").next();
-		
-		DefaultHttpClient httpclient = new DefaultHttpClient();
-		HttpPost post = new HttpPost(baseURL.toURI() + "rs/feed/"+FEED_NAME);
-		post.setEntity(new StringEntity(rssParameterBody));  		
-		
-		//when
-		HttpResponse response = httpclient.execute(post);
 
-		assertThat(response.getStatusLine().getStatusCode(), equalTo(201));
+		//when
+		int statusCode = HttpRequest.post(baseURL.toURI() + "rs/feed/"+FEED_NAME)
+			.send(xml).code();
+		
+		//then
+		assertThat(statusCode, equalTo(201));
 	}
 	
 	@Test

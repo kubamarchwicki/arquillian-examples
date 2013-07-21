@@ -1,17 +1,14 @@
 package pl.marchwicki.feedmanager.rs;
 
+import static com.jayway.jsonassert.JsonAssert.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
-import static com.jayway.jsonassert.JsonAssert.*;
 
+import java.io.StringWriter;
 import java.net.URL;
 
 import javax.inject.Inject;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
@@ -27,7 +24,6 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.descriptor.api.Descriptors;
 import org.jboss.shrinkwrap.descriptor.api.beans10.BeansDescriptor;
 import org.jboss.shrinkwrap.descriptor.api.webapp30.WebAppDescriptor;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -40,6 +36,7 @@ import pl.marchwicki.feedmanager.model.Item;
 import pl.marchwicki.feedmanager.model.entities.FeedEntity;
 import pl.marchwicki.feedmanager.model.entities.ItemEntity;
 
+import com.github.kevinsawicki.http.HttpRequest;
 import com.sun.jersey.spi.container.servlet.ServletContainer;
 
 @RunWith(Arquillian.class)
@@ -97,16 +94,15 @@ public class RestFeedRetrieveDatabaseTest {
 	@RunAsClient
 	public void shouldReturnValidFeedTest(@ArquillianResource URL baseURL) throws Exception {
 		//given
-		DefaultHttpClient httpclient = new DefaultHttpClient();
-		HttpGet get = new HttpGet(baseURL.toURI() + "rs/feed/"+FEED_NAME);
+		final StringWriter output = new StringWriter();
 		
 		//when
-		HttpResponse response = httpclient.execute(get);
+		HttpRequest request = HttpRequest.get(baseURL.toURI() + "rs/feed/"+FEED_NAME)
+			.receive(output);
 
 		//then
-		assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
-		String json = EntityUtils.toString(response.getEntity());
-		with(json).assertThat("$.feedname", equalTo("javalobby"))
+		assertThat(request.code(), equalTo(200));
+		with(output.toString()).assertThat("$.feedname", equalTo("javalobby"))
 			.assertThat("$.items[0].content", equalTo("first content"))
 			.assertThat("$.items[0].link", equalTo("http://java.dzone.com/link/1"))
 			.assertThat("$.items[1].content", equalTo("second content"))

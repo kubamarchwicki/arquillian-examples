@@ -4,16 +4,10 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 import java.io.File;
-import java.io.InputStream;
 import java.net.URL;
-import java.util.Scanner;
 
 import javax.inject.Inject;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
@@ -39,6 +33,8 @@ import pl.marchwicki.feedmanager.model.Feed;
 import pl.marchwicki.feedmanager.model.FeedBuilder;
 import pl.marchwicki.feedmanager.model.Item;
 
+import com.github.kevinsawicki.http.HttpRequest;
+
 @RunWith(Arquillian.class)
 public class RestFeedConsumerTest {
 
@@ -50,7 +46,7 @@ public class RestFeedConsumerTest {
 	@Deployment
 	public static WebArchive createDeployment() throws Exception {
 		File[] libs = Maven.resolver().loadPomFromFile("pom.xml")
-				.resolve("org.apache.httpcomponents:httpclient", "rome:rome:0.9")
+				.resolve("com.github.kevinsawicki:http-request:5.4", "rome:rome:0.9")
 				.withTransitivity().asFile();
 
 		WebAppDescriptor web = Descriptors.create(WebAppDescriptor.class)
@@ -77,17 +73,16 @@ public class RestFeedConsumerTest {
 	@RunAsClient
 	@InSequence(1)
 	public void init(@ArquillianResource URL baseURL) throws Exception {
-		final InputStream source = this.getClass().getClassLoader().getResourceAsStream("feed.xml");
-		final String rssParameterBody = new Scanner(source, "UTF-8" ).useDelimiter("\\A").next();
-		
-		DefaultHttpClient httpclient = new DefaultHttpClient();
-		HttpPost post = new HttpPost(baseURL.toURI() + "rs/feed/"+FEED_NAME);
-		post.setEntity(new StringEntity(rssParameterBody));  		
-		
-		//when
-		HttpResponse response = httpclient.execute(post);
+		final URL dir_url = RestFeedConsumerTest.class.getResource("/");
+		final File dir = new File(dir_url.toURI());
+		final File xml = new File(dir, "feed.xml");
 
-		assertThat(response.getStatusLine().getStatusCode(), equalTo(201));
+		//when
+		int statusCode = HttpRequest.post(baseURL.toURI() + "rs/feed/"+FEED_NAME)
+			.send(xml).code();
+		
+		//then
+		assertThat(statusCode, equalTo(201));
 	}
 	
 	@Test

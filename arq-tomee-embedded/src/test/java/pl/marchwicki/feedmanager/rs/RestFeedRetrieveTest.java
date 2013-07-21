@@ -3,12 +3,9 @@ package pl.marchwicki.feedmanager.rs;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
+import java.io.StringWriter;
 import java.net.URL;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
@@ -22,6 +19,8 @@ import org.junit.runner.RunWith;
 import pl.marchwicki.feedmanager.FeedsService;
 import pl.marchwicki.feedmanager.InMemoryFeedsRepository;
 import pl.marchwicki.feedmanager.model.FeedBuilder;
+
+import com.github.kevinsawicki.http.HttpRequest;
 
 @RunWith(Arquillian.class)
 public class RestFeedRetrieveTest {
@@ -39,16 +38,16 @@ public class RestFeedRetrieveTest {
 
 	@Test
 	public void shouldReturnEmptyFeedList(@ArquillianResource URL baseURL) throws Exception {
-		//given
-		DefaultHttpClient httpclient = new DefaultHttpClient();
-		HttpGet get = new HttpGet(baseURL.toURI() + "rs/feeds");
+		//given 
+		final StringWriter output = new StringWriter();
 		
 		//when
-		HttpResponse response = httpclient.execute(get);
+		HttpRequest request = HttpRequest.get(baseURL.toURI() + "rs/feeds")
+				.receive(output);
 		
 		//then
-		assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
-		assertThat(EntityUtils.toString(response.getEntity()), equalTo("{\"feed\":[]}"));
+		assertThat(request.code(), equalTo(200));
+		assertThat(output.toString(), equalTo("{\"feed\":[]}"));
 	}
 
 	

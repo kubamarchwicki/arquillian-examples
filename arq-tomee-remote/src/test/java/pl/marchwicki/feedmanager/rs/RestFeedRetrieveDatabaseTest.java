@@ -6,9 +6,6 @@ import static org.junit.Assert.*;
 import java.io.File;
 import java.net.URL;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
@@ -31,6 +28,8 @@ import pl.marchwicki.feedmanager.model.Item;
 import pl.marchwicki.feedmanager.model.entities.FeedEntity;
 import pl.marchwicki.feedmanager.model.entities.ItemEntity;
 
+import com.github.kevinsawicki.http.HttpRequest;
+
 @RunWith(Arquillian.class)
 public class RestFeedRetrieveDatabaseTest {
 
@@ -39,7 +38,7 @@ public class RestFeedRetrieveDatabaseTest {
 	@Deployment
 	public static WebArchive createDeployment() throws Exception {
 		String[] deps = { "org.hibernate:hibernate-entitymanager",
-				"org.apache.httpcomponents:httpclient",
+				"com.github.kevinsawicki:http-request:5.4",
 				"com.google.collections:google-collections:1.0",
 				"rome:rome:0.9"};
 
@@ -65,15 +64,11 @@ public class RestFeedRetrieveDatabaseTest {
 	@Ignore
 	public void shouldReturnNotFoundForNoFeedsTest(
 			@ArquillianResource URL baseURL) throws Exception {
-		// given
-		DefaultHttpClient httpclient = new DefaultHttpClient();
-		HttpGet get = new HttpGet(baseURL.toURI() + "rs/feed/" + FEED_NAME);
-
-		// when
-		HttpResponse response = httpclient.execute(get);
-
-		// then
-		assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+		//when
+		int statusCode = HttpRequest.get(baseURL.toURI() + "rs/feed/"+FEED_NAME).code();
+		
+		//then
+		assertThat(statusCode, equalTo(200));
 	}
 
 }

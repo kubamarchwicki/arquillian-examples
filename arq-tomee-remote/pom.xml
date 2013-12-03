@@ -13,7 +13,7 @@
 	</parent>
 
 	<properties>
-		<tomee.version>1.5.2</tomee.version>
+		<tomee.version>1.6.0</tomee.version>
 		<tomee.classifier>plus</tomee.classifier>
 	</properties>
 

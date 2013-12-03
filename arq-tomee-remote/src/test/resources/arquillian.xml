@@ -5,10 +5,7 @@
 			<property name="httpPort">-1</property>
 			<property name="stopPort">-1</property>
 			<property name="ajpPort">-1</property>
-			
-			<!-- this should be sufficient for using tomee-plus for remote testing -->
-			<!-- due to bug in TomEE 1.5.2 additiona arquillian-tomee.properties is required to setup classifier -->
-<!-- 			<property name="classifier">plus</property> -->
+ 			<property name="classifier">plus</property>
 			
 			<!-- optional directory and logging configuration -->
 			<property name="dir">target/apache-tomee</property>
